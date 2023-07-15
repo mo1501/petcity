@@ -1,6 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { createGlobalStyle } from 'styled-components';
+import NavBar from './routes/navbar/navbar.component';
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -12,10 +13,12 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <>
-    <GlobalStyle/>
-    <div className="App">
-      <p>Helo</p>
-    </div>
+      <GlobalStyle />
+      <NavBar />
+      <div className="App">
+        
+        <h2>Page content</h2>
+      </div>
     </>
   );
 }

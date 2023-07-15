@@ -1,0 +1,50 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    height: 20px;
+
+    border-bottom: 1px solid black;
+
+}
+
+
+
+.navbar .navlinks-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+
+    flex-basis: 60%;
+}
+
+.navbar .searchbar-container {
+
+    height: 20px;
+    flex-basis: 20%;
+    background-color: #F2B6B7;
+    border: 1px solid black;
+    border-radius: 20px;
+
+}
+
+.navbar .applogo-container {
+    
+    align-items: center;
+    flex-basis: 2%;
+}
+
+
+
+.cart-container {
+    display: flex;
+    align-items: center;
+}
+
+.accounticon-container {
+    display: flex;
+    align-items: center;
+}

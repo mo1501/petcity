@@ -1,0 +1,27 @@
+.search-bar {
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+
+    
+    
+  }
+
+.search-input{
+    flex-basis: 90%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    
+    
+}
+
+.search-icon {
+    height: 20px;
+
+ 
+
+}
