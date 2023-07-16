@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 import "./navbar.styles.css";
 
 
@@ -12,8 +13,10 @@ import AccountIcon from "../../components/navbar components/account/account.comp
 
 const NavBar = () => {
     return (
+        <>
         <div className="navbar">
             <div className="applogo-container">
+            
             <AppLogo />
             </div>
             <div className="navlinks-container">
@@ -29,9 +32,13 @@ const NavBar = () => {
             <AccountIcon />
             </div>
             
+            
 
            
         </div>
+        <Outlet/>
+        </>
+        
     );
 };
 export default NavBar;

@@ -2,3 +2,9 @@
   text-align: center;
 }
 
+.navbar-border {
+  background-color: black;
+
+  height: 1px;
+  margin: 10px;
+}
