@@ -5,6 +5,9 @@
     align-items: center;
     padding: 20px;
     height: 20px;
+    position: static;
+
+
 
 
 
@@ -24,7 +27,7 @@
 
 .navbar .searchbar-container {
     display: flex;
-    
+
     height: 30px;
     align-items: center;
     flex-basis: 20%;
@@ -35,7 +38,7 @@
 }
 
 .navbar .applogo-container {
-    
+
     align-items: center;
     flex-basis: 2%;
 }
@@ -52,8 +55,9 @@
     align-items: center;
 }
 
-.navbar-divider{
-    margin-top: 10px;
+.navbar-divider {
+    margin-top: 20px;
+    margin-bottom: 10px;
     height: 1px;
     background-color: black;
 }
