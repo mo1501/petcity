@@ -8,7 +8,7 @@ import "./cart.styles.css";
 const Cart = () => {
     return (
 
-        <Link to='/cart'>
+        <Link className="link-cart" to='/cart'>
         <CartIcon className='cart-icon' />
         </Link>
 

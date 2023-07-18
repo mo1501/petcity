@@ -8,3 +8,12 @@
   height: 1px;
   margin: 10px;
 }
+
+.link{
+  text-decoration: none;
+  color: inherit;
+}
+.link:hover{
+  text-decoration: none;
+  color: palevioletred;
+}

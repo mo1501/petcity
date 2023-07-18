@@ -3,6 +3,7 @@ import React from "react";
 
 
 import "./home.styles.css";
+import Footer from "../../components/footer/footer.component";
 
 
 const HomePage = () => {
@@ -11,6 +12,9 @@ const HomePage = () => {
 
         <div>
             <h1>Home Page</h1>
+            <footer>
+                <Footer/>
+            </footer>
         </div>
 
 

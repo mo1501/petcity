@@ -8,7 +8,7 @@ const AppLogo = () => {
     return (
 
         <div className="petlogo-container">
-            <Link to='/'>
+            <Link className="link" to='/'>
                 <PetLogo className='petcity-logo' />
             </Link>
         </div>

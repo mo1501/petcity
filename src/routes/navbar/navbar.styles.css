@@ -51,3 +51,9 @@
     display: flex;
     align-items: center;
 }
+
+.navbar-divider{
+    margin-top: 10px;
+    height: 1px;
+    background-color: black;
+}

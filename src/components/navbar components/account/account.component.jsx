@@ -9,7 +9,7 @@ import "./account.styles.css";
 const AccountIcon = () => {
     return (
 
-        <Link to='/account'>
+        <Link className="link-account" to='/account'>
         <UserIcon className='user-icon' />
         </Link>
 

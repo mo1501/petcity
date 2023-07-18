@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet} from "react-router-dom";
 import "./navbar.styles.css";
 
 
@@ -36,6 +36,7 @@ const NavBar = () => {
 
            
         </div>
+        <div className="navbar-divider"></div>
         <Outlet/>
         </>
         
