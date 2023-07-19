@@ -1,10 +1,72 @@
-.homepage{
+.homepage {
     display: flex;
     flex-direction: column;
     padding: 10px;
 
 }
-.carousel-container{
-    height: 900px;
+
+.carousel-container {
+    height: 600px;
     width: 100%;
+
+
+}
+
+.page-title {
+    padding: 10px;
+}
+
+.pet-categories-section {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 3px solid #F2B6B7;
+    border-bottom: 3px solid #F2B6B7;
+}
+
+.categories-container1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 90%;
+    padding: 30px;
+    margin-left: 60px;
+
+}
+
+.categories-container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 90%;
+    padding: 30px;
+    margin-left: 60px;
+
+}
+
+.category-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 140px;
+    width: 140px;
+    padding: 30px;
+
+}
+.popular-product-section{
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    
 }
