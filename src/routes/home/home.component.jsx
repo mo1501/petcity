@@ -8,11 +8,6 @@ import FarmImage from '../../assets/images-svgs/farm.png';
 import FishImage from '../../assets/images-svgs/Fish.png';
 import ReptileImage from '../../assets/images-svgs/ReptileImage.png';
 import RodentImage from '../../assets/images-svgs/rodent.png';
-import ProductImage from '../../assets/images-svgs/ProductImage.png';
-import MedsImage from '../../assets/images-svgs/meds.png';
-import AccessoriesImage from '../../assets/images-svgs/accessories.png';
-import ToyImage from '../../assets/images-svgs/toy.png';
-import RatingsImage from '../../assets/images-svgs/star.svg';
 
 
 
@@ -21,45 +16,15 @@ import RatingsImage from '../../assets/images-svgs/star.svg';
 import "./home.styles.css";
 import Footer from "../../components/footer/footer.component";
 import CarouselContainer from "../../components/carousel/carousel.component";
-import ProductCard from "../../components/product-card/product-card.component";
+import ProductCard2 from "../../components/product-card2/productcard2.component";
+import products from "../../assets/utilities/productdata.js";
 
 
 
 
 const HomePage = () => {
 
-    const products = [
-        {
-            name: 'Chicken Treats',
-            image: ProductImage,
-            rating: RatingsImage,
-            description: 'Give your precious cat the nourishment they deserve with our carefully crafted "Purrfectly Nourish" pet food.',
-            price: 25.99,
-        },
-        {
-            name: 'Playful Paws',
-            image: ToyImage,
-            rating: RatingsImage,
-            description: 'Unleash the joy and excitement in your furry friend with our "Playful Paws" toy!.',
-            price: 5.99,
-        },
-        {
-            name: 'Cozy Retreat',
-            image: AccessoriesImage,
-            rating: RatingsImage,
-            description: 'Give your beloved furry friend a private sanctuary with our "Cozy Retreat" pet tent.',
-            price: 10.99,
-        },
-        {
-            name: 'VitalPaws',
-            image: MedsImage,
-            rating: RatingsImage,
-            description: '"VitalPaws" offers a comprehensive range of solutions to cater to your pet"s individual health needs.',
-            price: 15.99,
-        }
-
-
-    ];
+    
 
 
 
@@ -118,10 +83,13 @@ const HomePage = () => {
                 <h5>Popular Products</h5>
                 <div className="popular-product-section">
 
-                    <ProductCard product={products} index={0} />
-                    <ProductCard product={products} index={1} />
-                    <ProductCard product={products} index={2} />
-                    <ProductCard product={products} index={3} />
+                    <ProductCard2 product={products} index={0} />
+                    <ProductCard2 product={products} index={1} />
+                    <ProductCard2 product={products} index={2} />
+                    <ProductCard2 product={products} index={3} />
+                    <ProductCard2 product={products} index={0} />
+                    <ProductCard2 product={products} index={0} />
+                    <ProductCard2 product={products} index={0} />
                 </div>
 
 

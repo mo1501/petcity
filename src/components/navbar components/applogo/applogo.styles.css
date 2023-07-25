@@ -1,14 +1,13 @@
-
 .petcity-logo {
 
-   
-    padding-top: 10px;
+
+    padding-top: 0px;
     padding-left: 10px;
     height: 50px;
-    left: 0;
-    object-fit: fill;
-    position: fixed;
-    top: 0;
+
+    object-fit: contain;
+
+
     width: 50px;
-    
+
 }

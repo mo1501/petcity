@@ -1,81 +1,100 @@
-.footer-divider{
+.footer-divider {
     height: 1px;
     background-color: black;
 }
-.footer-container{
+
+.footer-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding: 10px;
 }
 
-.need-help-section{
+.need-help-section {
     display: flex;
     flex-direction: column;
     padding: 0px;
     flex-basis: 30%;
 }
-.location-container{
+
+.location-container {
     display: flex;
     align-items: center;
-    
+
 }
-.mail-container{
-    display: flex;
-    align-items: center;
-}
-.phone-container{
+
+.mail-container {
     display: flex;
     align-items: center;
 }
 
-.information-section{
+.phone-container {
+    display: flex;
+    align-items: center;
+}
+
+.information-section {
     display: flex;
     flex-direction: column;
     padding: 0px;
     flex-basis: 30%;
 }
-.about-us-container{
+
+.about-us-container {
     display: flex;
     align-items: center;
-    
+
 }
-.tcs-container{
-    display: flex;
-    align-items: center;
-}
-.privacy-policy-container{
+
+.tcs-container {
     display: flex;
     align-items: center;
 }
 
-.socials-section{
+.privacy-policy-container {
+    display: flex;
+    align-items: center;
+}
+
+.socials-section {
     display: flex;
     flex-direction: column;
     flex-basis: 30%;
 
 }
-.socials-container{
+
+.socials-container {
     display: flex;
     flex-direction: column;
 
-    
+
 }
-.socialicons-container{
+
+.socialicons-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
 }
 
-.twitter-icon{
-    padding-right: 15px;
+.twitter-icon {
+
+    padding: 0px;
+    margin-right: 20px;
+
 }
-.linkedin-icon{
-    padding-right: 15px;
+
+.linkedin-icon {
+    padding-right: 0px;
+    margin-right: 20px;
 }
-.facebook-icon{
-    padding-right: 15px;
+
+.facebook-icon {
+    padding-right: 0px;
+    margin-right: 20px;
 }
-.instagram-icon{
-    padding-right: 15px;
+
+.instagram-icon {
+    padding-right: 0px;
+    margin-right: 10px;
 }
