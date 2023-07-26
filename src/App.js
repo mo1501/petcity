@@ -9,6 +9,7 @@ import DealsPage from './routes/deals/deals.component';
 import CartPage from './routes/cart/cart.component';
 import AccountPage from './routes/account/account.component';
 import WhatsNewPage from './routes/what\'s-new/whatsnew.component';
+import ProductPage from './routes/product-page/product-page.component';
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -28,6 +29,7 @@ function App() {
           <Route path='/deals' element={<DealsPage />} />
           <Route path='/whatsnew/' element={<WhatsNewPage />} />
           <Route path='/cart/' element={<CartPage />} />
+          <Route path='/product/:id' element={<ProductPage />} />
 
           <Route path='/account' element={<AccountPage />} />
 
