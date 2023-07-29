@@ -14,6 +14,7 @@ import Footer from "../../components/footer/footer.component";
 
 import ProductCard2 from "../../components/product-card2/productcard2.component";
 import products from "../../assets/utilities/productdata.js";
+import QuantityPicker from "../../components/quantity-picker/quantity-picker.component";
 
 
 
@@ -46,6 +47,7 @@ const ProductPage = () => {
                         <img src={product.rating} alt="" />
                         <p>(50)</p>
                         </div>
+                        <QuantityPicker/>
                         <div className="checkout-container">
                             <div className="product-price-info">
                                 <p>With your options:</p>

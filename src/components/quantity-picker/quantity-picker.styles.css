@@ -1,0 +1,32 @@
+.quantity-picker {
+    display: flex;
+    flex-direction: row;
+    width: 120px;
+
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 0px;
+
+}
+
+.minus-button {
+    flex-basis: 30%;
+    border: 1px solid black;
+    border-radius: 20%;
+    padding: 5px;
+    height: 20px;
+}
+
+.quantity {
+    flex-basis: 10%;
+    padding: 5px;
+    border-bottom: 1px solid black;
+    margin-top: 7px;
+}
+
+.plus-button {
+    flex-basis: 30%;
+    border: 1px solid black;
+    border-radius: 20%;
+    padding: 5px;
+}
