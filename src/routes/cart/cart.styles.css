@@ -53,12 +53,7 @@
     overflow-y: auto;
     /* Enable vertical scrolling if content overflows */
 }
-.navbar{
-    display: none;
-}
-.navbar-divider{
-    display: none;
-}
+
 .no-scroll {
     overflow: hidden;
     height: 100%;
