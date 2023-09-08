@@ -1,14 +1,7 @@
-.cartitems-section {
-
-    flex-basis: 60%;
-    display: flex;
-    flex-direction: column;
-}
-
 .cart-item {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     margin: 5px;
     padding: 5px;
@@ -71,7 +64,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 120px;
-    flex-basis: 5%;
+    flex-basis: 20%;
     align-items: flex-end;
     
 }

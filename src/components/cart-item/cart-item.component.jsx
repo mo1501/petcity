@@ -20,7 +20,7 @@ import "./cart-item.styles.css";
 const CartItem = ({index}) => {
 
     return (
-
+        
         <div className="cart-item">
             <div className="cart-image-section">
                 <img className='cart-image' src={products[index].image} alt="" />

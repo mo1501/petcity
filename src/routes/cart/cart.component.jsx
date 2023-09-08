@@ -1,6 +1,7 @@
 import React from "react";
+import { useEffect } from "react";
 import { ReactComponent as BackIcon } from '../../assets/images-svgs/arrow-left.svg';
-
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -12,12 +13,27 @@ import CartItem from "../../components/cart-item/cart-item.component";
 
 
 const CartPage = () => {
+    const history = useHistory();
+
+    const goBack = () => {
+        history.goBack(); // This navigates back to the previous page
+    };
+    useEffect(() => {
+        // Add the no-scroll class to the body when the component mounts
+        document.body.classList.add('no-scroll');
+
+        // Remove the no-scroll class when the component unmounts
+        return () => {
+            document.body.classList.remove('no-scroll');
+        };
+    }, []);
+
     return (
 
 
         <>
             <div className="header-section">
-                <BackIcon className='back-icon' />
+                <BackIcon className='back-icon' onClick={goBack}/>
                 <p className="header-text">Continue Shopping</p>
             </div>
             <div className="cart-header">

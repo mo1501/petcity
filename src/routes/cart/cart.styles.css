@@ -44,6 +44,25 @@
     margin: 5px;
 }
 
+.cartitems-section {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    /* Set a fixed height for the scrollable section */
+    overflow-y: auto;
+    /* Enable vertical scrolling if content overflows */
+}
+.navbar{
+    display: none;
+}
+.navbar-divider{
+    display: none;
+}
+.no-scroll {
+    overflow: hidden;
+    height: 100%;
+}
 
 .checkout-section {
     background-color: brown;
