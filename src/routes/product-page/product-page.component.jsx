@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
 
@@ -12,8 +12,8 @@ import Button from 'react-bootstrap/Button';
 import "./product-page.styles.css";
 import Footer from "../../components/footer/footer.component";
 
-import ProductCard2 from "../../components/product-card2/productcard2.component";
-import products from "../../assets/utilities/productdata.js";
+//import ProductCard2 from "../../components/product-card2/productcard2.component";
+//import products from "../../assets/utilities/productdata.js";
 import QuantityPicker from "../../components/quantity-picker/quantity-picker.component";
 
 

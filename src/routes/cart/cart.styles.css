@@ -1,0 +1,51 @@
+.header-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.back-icon {
+    vertical-align: middle;
+    margin: 5px;
+    height: 50px;
+}
+
+.header-text {
+    text-align: center;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-top: 12px;
+    font-weight: 700;
+    color: grey;
+
+}
+
+.cart-header {
+    padding: 5px;
+    margin: 5px;
+}
+
+.cart-title {
+    font-weight: 700;
+    margin-bottom: 0px;
+
+}
+
+.cart-subtitle {
+    font-size: small;
+    color: grey;
+}
+
+.cartpage-content {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+.checkout-section {
+    background-color: brown;
+    flex-basis: 40%;
+}
