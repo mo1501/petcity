@@ -12,6 +12,7 @@ import AccountIcon from "../../components/navbar components/account/account.comp
 
 
 const NavBar = () => {
+
     return (
         <>
         <div className="navbar">
@@ -38,6 +39,7 @@ const NavBar = () => {
         </div>
         <div className="navbar-divider"></div>
         <Outlet/>
+        
         </>
         
     );

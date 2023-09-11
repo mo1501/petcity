@@ -60,6 +60,7 @@
 }
 
 .checkout-section {
-    background-color: brown;
+    margin-left: 20px;
+    background-color: #20716A;
     flex-basis: 40%;
 }

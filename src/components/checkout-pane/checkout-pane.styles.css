@@ -1,0 +1,56 @@
+.checkoutpane-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-title {
+    font-size: x-large;
+    color: white;
+    font-weight: bolder;
+    margin: 10px;
+    margin-bottom: 3px;
+}
+
+.payment-subtitle {
+    font-size: medium;
+    color: white;
+    margin: 10px;
+}
+
+.payment-expcvc-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.checkout-price-button-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.total {
+    font-size: 20px;
+    color: white;
+}
+
+.price {
+    font-size: 40px;
+    color: white;
+}
+.checkout-button{
+    margin: 10px;
+    background-color: #F38385;
+    height: 70px;
+    width: 50%;
+
+}

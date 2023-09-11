@@ -30,7 +30,6 @@ function App() {
           <Route path='/whatsnew/' element={<WhatsNewPage />} />
           <Route path='/cart/' element={<CartPage />} />
           <Route path='/product/:id' element={<ProductPage />} />
-
           <Route path='/account' element={<AccountPage />} />
 
 
