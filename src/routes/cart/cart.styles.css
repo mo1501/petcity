@@ -23,7 +23,8 @@
 
 .cart-header {
     padding: 5px;
-    margin: 5px;
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .cart-title {
@@ -63,4 +64,5 @@
     margin-left: 20px;
     background-color: #20716A;
     flex-basis: 40%;
+    border-radius: 5px;
 }

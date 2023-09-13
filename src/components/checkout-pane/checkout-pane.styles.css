@@ -1,6 +1,7 @@
 .checkoutpane-section {
     display: flex;
     flex-direction: column;
+
 }
 
 .payment-title {
@@ -41,10 +42,11 @@
 .total {
     font-size: 20px;
     color: white;
+    margin-bottom: 0px;
 }
 
 .price {
-    font-size: 40px;
+    font-size: 36px;
     color: white;
 }
 .checkout-button{
@@ -52,5 +54,13 @@
     background-color: #F38385;
     height: 70px;
     width: 50%;
+    border-radius: 5px;
 
+}
+.checkout-label{
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
 }

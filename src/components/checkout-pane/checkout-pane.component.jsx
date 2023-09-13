@@ -26,7 +26,9 @@ const CheckoutPane = () => {
                     <p className="total">Total:</p>
                     <p className="price">$79.99</p>
                 </div>
-                <div className="checkout-button">Checkout</div>
+                <div className="checkout-button">
+                    <p className="checkout-label">Checkout</p>
+                </div>
 
             </div>
 

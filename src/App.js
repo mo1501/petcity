@@ -10,6 +10,7 @@ import CartPage from './routes/cart/cart.component';
 import AccountPage from './routes/account/account.component';
 import WhatsNewPage from './routes/what\'s-new/whatsnew.component';
 import ProductPage from './routes/product-page/product-page.component';
+import AuthPage from './routes/authentication/authentication.component';
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -34,6 +35,8 @@ function App() {
 
 
         </Route>
+        <Route path='/auth' element={<AuthPage />} />
+
 
       </Routes>
     </>

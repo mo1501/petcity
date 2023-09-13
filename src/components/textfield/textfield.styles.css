@@ -1,13 +1,41 @@
+.input-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 70px;
+    width: 90%;
+    padding-left: 10px;
+    margin-left: 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 30px;
+
+}
+
 .textfield {
     height: 60px;
     width: 97%;
     background-color: #ffffff;
-    border-radius: 5px;
+    border-radius: 40px;
     margin: 10px;
-    
+    border: 1px solid white;
+
 
 }
-.textfield-label{
+
+.textfield:focus {
+    outline: none;
+}
+
+.textfield-label {
     padding: 15px;
     font-weight: 300;
+
+
+}
+
+.icon-vector {
+    margin: 20px;
+
 }
