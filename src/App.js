@@ -24,6 +24,7 @@ function App() {
     <>
       <GlobalStyle />
       <Routes>
+        <Route path='/auth' element={<AuthPage />} />
         <Route path='/' element={<NavBar />} >
           <Route index element={<HomePage />} />
           <Route path='/categories' element={<CategoriesPage />} />
@@ -35,7 +36,7 @@ function App() {
 
 
         </Route>
-        <Route path='/auth' element={<AuthPage />} />
+
 
 
       </Routes>

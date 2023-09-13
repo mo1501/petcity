@@ -14,6 +14,7 @@ import AuthForm from "../../components/auth-form/auth-form.component";
 
 
 const AuthPage = () => {
+    const isRegistered = false;
     useEffect(() => {
         // Add the no-scroll class to the body when the component mounts
         document.body.classList.add('no-scroll');
@@ -28,10 +29,10 @@ const AuthPage = () => {
     return (
         <div className="authentication-page">
             <div className="hero-image-section">
-                <img className="auth-hero-image" src={FishHero} alt="" />
+                <img className="auth-hero-image" src={isRegistered ? FishHero : CatHero} alt="" />
             </div>
             <div className="auth-form-section">
-                <AuthForm />
+                <AuthForm isRegistered={isRegistered} />
             </div>
         </div>
     );

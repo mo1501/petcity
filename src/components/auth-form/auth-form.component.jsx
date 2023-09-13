@@ -1,15 +1,20 @@
 import React from "react";
 
-import products from "../../assets/utilities/productdata.js";
+import TextfieldComponent from "../textfield/textfield.component.jsx";
+import SocialsPanel from "../socials/socials.component.jsx";
+import { useNavigate } from 'react-router-dom';
 
 import "./auth-form.styles.css";
 
-import TextfieldComponent from "../textfield/textfield.component.jsx";
-import SocialsPanel from "../socials/socials.component.jsx";
 
 
-const AuthForm = () => {
-    const isRegistered = false;
+
+const AuthForm = ({ isRegistered }) => {
+    const navigate = useNavigate();
+
+    const handleAuthPageButtonClick = () => {
+        navigate('/');  // Navigate to About page
+    };
     return (
 
         <div className="auth-form">
@@ -22,12 +27,16 @@ const AuthForm = () => {
                 <TextfieldComponent isAuthForm={true} type={'password'} label={'Password'} />
                 {!isRegistered && <TextfieldComponent isAuthForm={true} type={'password'} label={'Confirm Password'} />}
             </div>
-            <div className="auth-button">
-                {isRegistered ? <p className="auth-button-label">Sign Up</p> : <p className="auth-button-label">Log In</p>}
+            <div className="auth-button" onClick={handleAuthPageButtonClick}>
+                {isRegistered ? <p className="auth-button-label">Log in</p> : <p className="auth-button-label">Sign Up</p>}
             </div>
-            <div className="socials-divider">
-                <label>Sign up using social media</label>
-            </div>
+
+            {!isRegistered ? <span className="socials-divider">
+                Sign up with social media
+            </span> : <span className="socials-divider">
+                Log in with social media
+            </span>}
+
             <SocialsPanel />
             <p className="auth-form-header-subtitle">By continuing you are confirming that you agree with our Terms and Conditions</p>
         </div>

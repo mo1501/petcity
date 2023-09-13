@@ -26,12 +26,13 @@
 }
 
 .auth-form-header-subtitle {
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 200;
 }
 
 .auth-button {
     margin: 10px;
+    margin-bottom: 5px;
     background-color: #F38385;
     height: 50px;
     width: 70%;
@@ -47,6 +48,14 @@
 }
 
 .socials-divider {
-    margin: 20px;
-    background-color: #F38385;
+    font-size: small;
+    margin: 2px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #F38385;
+    color: #F38385;
+    height: 10px;
+    width: 80%;
+    text-align: center;
+    
+
 }

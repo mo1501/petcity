@@ -1,11 +1,11 @@
 import React from "react";
 
-import products from "../../assets/utilities/productdata.js";
+
 
 import "./checkout-pane.styles.css";
 import PaymentMethodContainer from "../payment-method/payment-method.component.jsx";
 import TextfieldComponent from "../textfield/textfield.component.jsx";
-import Button from "react-bootstrap/esm/Button.js";
+
 
 const CheckoutPane = () => {
 

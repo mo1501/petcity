@@ -1,15 +1,19 @@
-.authentication-page{
+.authentication-page {
     display: flex;
     flex-direction: row;
 }
-.hero-image-section{
+
+.hero-image-section {
     flex-basis: 60%;
-    background-color: aqua;
+
 }
-.auth-hero-image{
+
+.auth-hero-image {
     height: 100%;
     width: 100%;
+    border-top-right-radius: 10px;
 }
-.auth-form-section{
+
+.auth-form-section {
     flex-basis: 50%;
 }

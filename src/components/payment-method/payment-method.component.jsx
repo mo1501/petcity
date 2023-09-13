@@ -1,6 +1,6 @@
 import React from "react";
 
-import products from "../../assets/utilities/productdata.js";
+
 import { ReactComponent as VisaIcon } from '../../assets/images-svgs/visa-logo.svg';
 import { ReactComponent as PaypalIcon } from '../../assets/images-svgs/paypal-vector.svg';
 import { ReactComponent as MasterCardIcon } from '../../assets/images-svgs/mastercard-logo.svg';

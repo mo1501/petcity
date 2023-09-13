@@ -10,7 +10,6 @@ import { useEffect } from "react";
 
 import "./cart.styles.css";
 import CartItem from "../../components/cart-item/cart-item.component";
-import PaymentMethodContainer from "../../components/payment-method/payment-method.component";
 import CheckoutPane from "../../components/checkout-pane/checkout-pane.component";
 
 
