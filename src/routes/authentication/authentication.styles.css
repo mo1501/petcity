@@ -17,3 +17,49 @@
 .auth-form-section {
     flex-basis: 50%;
 }
+
+.login-confirmation {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.login-confirmation-text {
+    display: inline;
+    font-weight: 300;
+    font-size: small;
+
+
+}
+
+.sign-in-link {
+    color: #F38385;
+    font-weight: 700;
+    padding: 0px;
+    text-decoration: underline;
+}
+
+.sign-in-link :hover {
+    text-decoration: underline;
+}
+
+.login-confirmation-text :hover {
+    display: inline;
+
+}
+
+.register-toggle-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.register-toggle-text {
+    display: inline;
+    font-weight: 300;
+    font-size: small;
+}
+.sign-up-link {
+    color: #F38385;
+    font-weight: 700;
+    padding: 0px;
+    text-decoration: underline;
+}

@@ -24,15 +24,15 @@ function App() {
     <>
       <GlobalStyle />
       <Routes>
-        <Route path='/auth' element={<AuthPage />} />
-        <Route path='/' element={<NavBar />} >
+        <Route path='/' element={<AuthPage />} />
+        <Route path='/home' element={<NavBar />} >
           <Route index element={<HomePage />} />
-          <Route path='/categories' element={<CategoriesPage />} />
-          <Route path='/deals' element={<DealsPage />} />
-          <Route path='/whatsnew/' element={<WhatsNewPage />} />
-          <Route path='/cart/' element={<CartPage />} />
-          <Route path='/product/:id' element={<ProductPage />} />
-          <Route path='/account' element={<AccountPage />} />
+          <Route path='/home/categories' element={<CategoriesPage />} />
+          <Route path='/home/deals' element={<DealsPage />} />
+          <Route path='/home/whatsnew/' element={<WhatsNewPage />} />
+          <Route path='/home/cart/' element={<CartPage />} />
+          <Route path='/home/categories/product/:id' element={<ProductPage />} />
+          <Route path='/home/account' element={<AccountPage />} />
 
 
         </Route>

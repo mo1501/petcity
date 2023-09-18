@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import FishHero from '../../assets/images-svgs/fishhero.png';
 import CatHero from '../../assets/images-svgs/cathero.png';
+import { useState } from 'react';
+
 
 
 
@@ -14,7 +16,10 @@ import AuthForm from "../../components/auth-form/auth-form.component";
 
 
 const AuthPage = () => {
-    const isRegistered = false;
+    const [isRegistered, setisRegistered] = useState(false);
+    const changeIsRegistered = () => {
+        setisRegistered(prevState => !prevState);
+    };
     useEffect(() => {
         // Add the no-scroll class to the body when the component mounts
         document.body.classList.add('no-scroll');
@@ -33,7 +38,16 @@ const AuthPage = () => {
             </div>
             <div className="auth-form-section">
                 <AuthForm isRegistered={isRegistered} />
+                {!isRegistered ?
+                    <div className="login-confirmation" >
+                        <p className="login-confirmation-text">Already have an account? <span onClick={changeIsRegistered} className="sign-in-link">Sign In</span></p>
+                    </div>
+                    : <div className="register-toggle-container" >
+                        <p className="register-toggle-text">Already have an account? <span onClick={changeIsRegistered} className="sign-up-link">Sign Up</span></p>
+                    </div>
+                }
             </div>
+
         </div>
     );
 };

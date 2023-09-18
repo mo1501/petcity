@@ -13,7 +13,7 @@ const AuthForm = ({ isRegistered }) => {
     const navigate = useNavigate();
 
     const handleAuthPageButtonClick = () => {
-        navigate('/');  // Navigate to About page
+        navigate('/home');  // Navigate to About page
     };
     return (
 
@@ -23,7 +23,7 @@ const AuthForm = ({ isRegistered }) => {
                 <p className="auth-form-header-subtitle">Complete your details or continue using social media</p>
             </div>
             <div className="auth-form-textfield">
-                <TextfieldComponent isAuthForm={true} type={'email'} label={'Email'} />
+                <TextfieldComponent isAuthForm={true} type={'email'} label={'Email'}  />
                 <TextfieldComponent isAuthForm={true} type={'password'} label={'Password'} />
                 {!isRegistered && <TextfieldComponent isAuthForm={true} type={'password'} label={'Confirm Password'} />}
             </div>
@@ -39,6 +39,7 @@ const AuthForm = ({ isRegistered }) => {
 
             <SocialsPanel />
             <p className="auth-form-header-subtitle">By continuing you are confirming that you agree with our Terms and Conditions</p>
+            
         </div>
 
 

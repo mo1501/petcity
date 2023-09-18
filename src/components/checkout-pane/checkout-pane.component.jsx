@@ -18,8 +18,8 @@ const CheckoutPane = () => {
             <TextfieldComponent label={'Name on card ....'} />
             <TextfieldComponent label={'Card Number ....'} />
             <div className="payment-expcvc-section">
-                <TextfieldComponent label={'Expiry Date'} />
-                <TextfieldComponent label={'CVC'} />
+                <TextfieldComponent className='expiry-date-field' label={'Expiry Date'} />
+                <TextfieldComponent className='cvc-field' label={'CVC'} />
             </div>
             <div className="checkout-price-button-section">
                 <div className="price-container">

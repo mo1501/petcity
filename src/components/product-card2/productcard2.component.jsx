@@ -14,7 +14,7 @@ import "./productcard2.styles.css";
 const ProductCard2 = ({ product, index }) => {
     const navigate = useNavigate();
     const handleProductClick = () => {
-        navigate(`/product/${product[index]}`, {state: {product: product[index]}});
+        navigate(`/home/categories/product/${product[index]}`, {state: {product: product[index]}});
 
     }
 
