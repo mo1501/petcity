@@ -36,6 +36,7 @@
     font-weight: 700;
     padding: 0px;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .sign-in-link :hover {
@@ -62,4 +63,5 @@
     font-weight: 700;
     padding: 0px;
     text-decoration: underline;
+    cursor: pointer;
 }

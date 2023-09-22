@@ -6,6 +6,7 @@ import "../../../assets/images-svgs/user.svg"
 import "./account.styles.css";
 
 
+
 const AccountIcon = () => {
     return (
 

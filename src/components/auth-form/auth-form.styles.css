@@ -31,15 +31,28 @@
 }
 
 .auth-button {
+
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+
     margin: 10px;
     margin-bottom: 5px;
     background-color: #F38385;
     height: 50px;
     width: 70%;
     border-radius: 10px;
+    border-color: white;
+
 }
 
 .auth-button-label {
+
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -56,6 +69,6 @@
     height: 10px;
     width: 80%;
     text-align: center;
-    
+
 
 }
