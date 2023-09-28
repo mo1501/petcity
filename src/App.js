@@ -13,6 +13,7 @@ import ProductPage from './routes/product-page/product-page.component';
 import AuthPage from './routes/authentication/authentication.component';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ForgotPasswordPage from './routes/forgot-password/forgot-password-page.component';
 const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Montserrat', sans-serif;
@@ -27,6 +28,7 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route path='/' element={<AuthPage />} />
+        <Route path='/forgot-password' element={<ForgotPasswordPage />} />
         <Route path='/home' element={<NavBar />} >
           <Route index element={<HomePage />} />
           <Route path='/home/categories' element={<CategoriesPage />} />

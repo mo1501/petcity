@@ -72,3 +72,13 @@
 
 
 }
+.forgot-password-link{
+    font-style: italic;
+    font-weight: lighter;
+    font-size: small;
+    margin: 0px;
+    text-decoration: underline;
+    text-align: right;
+    padding: 0px;
+    
+}

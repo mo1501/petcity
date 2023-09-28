@@ -158,7 +158,7 @@ const AuthForm = ({ isRegistered }) => {
                 <Textfield id='password-field' isAuthForm={true} type={'password'} label={'Password'} name='password' value={password} onChange={handleChange} />
                 {!isRegistered && <Textfield id='confirmPassword-field' isAuthForm={true} type={'password'} label='Confirm Password' name='confirmPassword' value={confirmPassword} onChange={handleChange} />}
             </div>
-
+            {isRegistered && <span className="forgot-password-link" onClick={()=> {navigate('/forgot-password')}}>Forgot Password? </span>}
             <button type="submit" className="auth-button" >
                 {isRegistered ? <p className="auth-button-label">Log in</p> : <p className="auth-button-label" onClick={handleRegistrationSubmit}>Sign Up</p>}
             </button>
