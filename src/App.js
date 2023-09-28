@@ -11,7 +11,8 @@ import AccountPage from './routes/account/account.component';
 import WhatsNewPage from './routes/what\'s-new/whatsnew.component';
 import ProductPage from './routes/product-page/product-page.component';
 import AuthPage from './routes/authentication/authentication.component';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Montserrat', sans-serif;
@@ -23,6 +24,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <ToastContainer />
       <Routes>
         <Route path='/' element={<AuthPage />} />
         <Route path='/home' element={<NavBar />} >

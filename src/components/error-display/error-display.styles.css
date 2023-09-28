@@ -1,0 +1,22 @@
+.error {
+    color: red;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px red;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    position: fixed;
+    /* This will make it stick to the viewport */
+    top: 10px;
+    /* 10px from the top */
+    right: 10px;
+    /* 10px from the right */
+    z-index: 1000;
+
+    display: flex;
+    /* Use flexbox for alignment */
+    align-items: center;
+    /* Vertically center the text and the icon */
+    gap: 0.5rem;
+}

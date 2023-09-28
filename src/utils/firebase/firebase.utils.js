@@ -7,11 +7,10 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    sendPasswordResetEmail
+
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc, addDoc, collection }
     from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAr_JkU3N21IY4nvoL0k1sfOO8AzEF6LBE",
@@ -73,19 +72,15 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password);
 
     // return await createUserWithEmailAndPassword(auth, email, password);
-    try {
-        const res = await createUserWithEmailAndPassword(auth, email, password);
-        const user = res.user;
-        console.log(user)
-        await addDoc(collection(db, "users"), {
-            uid: user.uid,
-            name: email,
 
-        });
-    } catch (err) {
-        console.error(err);
-        alert(err.message);
-    }
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    return await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        name: email,
+
+    });
+
 };
 
 
