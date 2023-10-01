@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import Textfield from "../textfield/textfield.component.jsx";
 import SocialsPanel from "../socials/socials.component.jsx";
-import LoadingSpinner from "../loading-spinner.component.jsx/loading-spinner.component.jsx";
+import LoadingSpinner from "../loading-spinner/loading-spinner.component.jsx";
 import { useNavigate } from 'react-router-dom';
 import {
     auth,
@@ -14,7 +14,7 @@ import {
 } from '../../utils/firebase/firebase.utils';
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import "./auth-form.styles.css";
@@ -86,6 +86,7 @@ const AuthForm = ({ isRegistered }) => {
             console.log(isLoading);
 
         } catch (err) {
+            setisLoading(false);
             resetFormFields();
             if (err.code === 'auth/email-already-in-use') {
                 setError('Email already exists');
@@ -98,20 +99,19 @@ const AuthForm = ({ isRegistered }) => {
 
     const handleSignInSubmit = async (event) => {
         event.preventDefault();
-        if (email && password === '') {
+        if (email === "" && password === "") {
             setError('Input fields are empty');
             return;
         }
         try {
+
             setisLoading(true);
             await signInAuthUserWithEmailAndPassword(
                 email,
                 password
             );
             console.log(isLoading);
-            toast.success('Login Successful !', {
-                position: toast.POSITION.TOP_RIGHT
-            });
+
             resetFormFields();
             setError(null);
             setisLoading(false);
@@ -120,7 +120,8 @@ const AuthForm = ({ isRegistered }) => {
 
 
         } catch (err) {
-            resetFormFields();
+            setisLoading(false);
+
             switch (err.code) {
                 case 'auth/wrong-password':
                     setError('Wrong Email or Password');
@@ -158,7 +159,7 @@ const AuthForm = ({ isRegistered }) => {
                 <Textfield id='password-field' isAuthForm={true} type={'password'} label={'Password'} name='password' value={password} onChange={handleChange} />
                 {!isRegistered && <Textfield id='confirmPassword-field' isAuthForm={true} type={'password'} label='Confirm Password' name='confirmPassword' value={confirmPassword} onChange={handleChange} />}
             </div>
-            {isRegistered && <span className="forgot-password-link" onClick={()=> {navigate('/forgot-password')}}>Forgot Password? </span>}
+            {isRegistered && <span className="forgot-password-link" onClick={() => { navigate('/forgot-password') }}>Forgot Password? </span>}
             <button type="submit" className="auth-button" >
                 {isRegistered ? <p className="auth-button-label">Log in</p> : <p className="auth-button-label" onClick={handleRegistrationSubmit}>Sign Up</p>}
             </button>

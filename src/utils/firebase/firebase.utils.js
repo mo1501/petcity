@@ -12,6 +12,7 @@ import {
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc, addDoc, collection }
     from 'firebase/firestore';
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAr_JkU3N21IY4nvoL0k1sfOO8AzEF6LBE",
@@ -24,6 +25,10 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
+
+const storage = getStorage(firebaseApp);
+
+export { firebaseApp, storage };
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -39,6 +44,7 @@ export const signInWithGooglePopup = () =>
 
 
 export const db = getFirestore(firebaseApp);
+
 
 export const createUserDocumentFromAuth = async (
     userAuth,
@@ -106,3 +112,4 @@ export const changePassowrd = async (email) => {
 
 
 }
+

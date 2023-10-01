@@ -16,7 +16,7 @@ const TextField = ({ isAuthForm, type, label, name, value, id, onChange }) => {
         <div className="input-field">
 
             {isAuthForm && type === 'email' ? <MailVector className='icon-vector' /> : <PasswordVector className='icon-vector' />}
-            <input className="textfield" id={id} placeholder={label} type={type} name={name}   defaultValue={value} onChange={onChange} />
+            <input className="textfield" id={id} placeholder={label} type={type} name={name} defaultValue={value} onChange={onChange} />
 
             {isAuthForm && type === 'password' && <EyeVector className='icon-vector' />}
 

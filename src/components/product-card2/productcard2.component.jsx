@@ -11,10 +11,10 @@ import "./productcard2.styles.css";
 
 
 
-const ProductCard2 = ({ product, index }) => {
+const ProductCard2 = ({ product }) => {
     const navigate = useNavigate();
     const handleProductClick = () => {
-        navigate(`/home/categories/product/${product[index]}`, {state: {product: product[index]}});
+        navigate(`/home/categories/product/${product.id}`, {state: {product: product}});
 
     }
 
@@ -24,15 +24,15 @@ const ProductCard2 = ({ product, index }) => {
 
         <div className="product-card2" onClick={handleProductClick}>
             <Card border="dark" style={{ width: '18rem', height: '22rem' }}>
-                <Card.Img variant="top" src={product[index].image} />
+                <Card.Img variant="top" src={product.imageUrl} />
                 <Card.Body>
-                    <Card.Title className="product-title">{product[index].name}</Card.Title>
+                    <Card.Title className="product-title">{product.name}</Card.Title>
                     <Card.Text className="product-description">
-                        {product[index].description}
+                        {product.shortDescription}
                     </Card.Text>
                     <div className="product-price-container">
                         <Button className="atc-button">Add to cart</Button>
-                        <Card.Text className="product-price">${product[index].price}</Card.Text>
+                        <Card.Text className="product-price">${product.price/100}</Card.Text>
                     </div>
                 </Card.Body>
             </Card>

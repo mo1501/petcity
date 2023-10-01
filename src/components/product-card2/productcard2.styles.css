@@ -1,6 +1,17 @@
 .product-card2 {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     margin-left: 0px;
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+.product-card2 .card-img-top {
+    width: 100%;
+    height: 40%;
+    object-fit: cover;
+    /* This ensures the image retains its aspect ratio and doesn't get stretched or squished */
 }
 
 .product-title {
@@ -11,6 +22,7 @@
 .product-description {
     font-size: 14px;
     height: 5rem;
+    margin-bottom: 2px;
 }
 
 .atc-button {
@@ -25,6 +37,7 @@
 }
 
 .product-price-container {
+    padding: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;

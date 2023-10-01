@@ -2,18 +2,18 @@
 import './App.css';
 import { createGlobalStyle } from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
-import NavBar from './routes/navbar/navbar.component';
-import HomePage from './routes/home/home.component';
-import CategoriesPage from './routes/categories/categories.component';
-import DealsPage from './routes/deals/deals.component';
-import CartPage from './routes/cart/cart.component';
-import AccountPage from './routes/account/account.component';
-import WhatsNewPage from './routes/what\'s-new/whatsnew.component';
-import ProductPage from './routes/product-page/product-page.component';
-import AuthPage from './routes/authentication/authentication.component';
+import NavBar from './routes/navbar/navbar.component.jsx';
+import HomePage from './routes/home/home.component.jsx';
+import CategoriesPage from './routes/categories/categories.component.jsx';
+import DealsPage from './routes/deals/deals.component.jsx';
+import CartPage from './routes/cart/cart.component.jsx';
+import AccountPage from './routes/account/account.component.jsx';
+import WhatsNewPage from './routes/what\'s-new/whatsnew.component.jsx';
+import ProductPage from './routes/product-page/product-page.component.jsx';
+import AuthPage from './routes/authentication/authentication.component.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ForgotPasswordPage from './routes/forgot-password/forgot-password-page.component';
+import ForgotPasswordPage from './routes/forgot-password/forgot-password-page.component.jsx';
 const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Montserrat', sans-serif;
