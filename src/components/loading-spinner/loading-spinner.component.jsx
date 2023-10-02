@@ -2,7 +2,10 @@ import React from 'react';
 import './loading-spinner.styles.css';
 
 const LoadingSpinner = () => {
-    return <div className="spinner"></div>;
+    return <>
+        <div className="overlay"></div>
+        <div className="spinner"></div>;
+    </>
 };
 
 

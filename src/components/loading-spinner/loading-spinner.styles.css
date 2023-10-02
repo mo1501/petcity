@@ -1,28 +1,35 @@
+/* The overlay that covers the whole page and blurs everything underneath */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    backdrop-filter: blur(5px); /* Blur effect */
+    z-index: 999; /* Ensure it's above other items */
+}
+
 .spinner {
-    border: 8px solid rgba(255, 255, 255, 0.3);
-    /* Transparent border */
+    border: 16px solid rgba(255, 255, 255, 0.3); /* Increase border thickness */
     border-radius: 50%;
-    /* Make it circular */
-    border-top: 8px solid red;
-    /* Red color on the top border */
-    width: 50px;
-    height: 50px;
+    border-top: 16px solid red; /* Make the top border thicker and red */
+    width: 100px; /* Double the size */
+    height: 100px; 
     animation: spin 1s linear infinite;
 
-    /* Positioning styles */
-    position: fixed;
-    /* Position relative to the browser window */
-    top: 10px;
-    /* 10 pixels from the top */
-    right: 10px;
-    /* 10 pixels from the right */
+    /* Positioning styles to center the spinner */
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); /* This ensures the spinner remains centered regardless of its size */
+    z-index: 1000; /* This ensures the spinner is above the overlay */
 }
 
 @keyframes spin {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }

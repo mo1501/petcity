@@ -1,17 +1,23 @@
-.product-card2 {
+.product-card2-container {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     padding: 10px;
     margin-left: 0px;
-    height: 350px;
-    margin-bottom: 20px;
+
+
 }
 
-.product-card2 .card-img-top {
+.product-card2-container .card-img-top {
     width: 100%;
-    height: 40%;
+    height: 60%;
     object-fit: cover;
     /* This ensures the image retains its aspect ratio and doesn't get stretched or squished */
+}
+
+.product-card-text{
+    margin: 0px;
+
 }
 
 .product-title {
@@ -21,25 +27,30 @@
 
 .product-description {
     font-size: 14px;
-    height: 5rem;
-    margin-bottom: 2px;
+    height: 2rem;
+    color: grey;
+   
 }
 
 .atc-button {
+    
     background-color: #20716a;
     border: 1px solid;
     border-color: #000000;
 }
 
 .product-price {
-    font-size: 20px;
+    font-size: 24px;
+
     font-weight: 600;
 }
 
 .product-price-container {
+    
     padding: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
 }
