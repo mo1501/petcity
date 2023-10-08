@@ -2,6 +2,8 @@
 import './App.css';
 import { createGlobalStyle } from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store/store.js';
 import NavBar from './routes/navbar/navbar.component.jsx';
 import HomePage from './routes/home/home.component.jsx';
 import CategoriesPage from './routes/categories/categories.component.jsx';
@@ -24,26 +26,28 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <ToastContainer />
-      <Routes>
-        <Route path='/' element={<AuthPage />} />
-        <Route path='/forgot-password' element={<ForgotPasswordPage />} />
-        <Route path='/home' element={<NavBar />} >
-          <Route index element={<HomePage />} />
-          <Route path='/home/categories' element={<CategoriesPage />} />
-          <Route path='/home/deals' element={<DealsPage />} />
-          <Route path='/home/whatsnew/' element={<WhatsNewPage />} />
-          <Route path='/home/cart/' element={<CartPage />} />
-          <Route path='/home/categories/product/:id' element={<ProductPage />} />
-          <Route path='/home/account' element={<AccountPage />} />
+      <Provider store={store}>
+        <GlobalStyle />
+        <ToastContainer />
+        <Routes>
+          <Route path='/' element={<AuthPage />} />
+          <Route path='/forgot-password' element={<ForgotPasswordPage />} />
+          <Route path='/home' element={<NavBar />} >
+            <Route index element={<HomePage />} />
+            <Route path='/home/categories' element={<CategoriesPage />} />
+            <Route path='/home/deals' element={<DealsPage />} />
+            <Route path='/home/whatsnew/' element={<WhatsNewPage />} />
+            <Route path='/home/cart/' element={<CartPage />} />
+            <Route path='/home/categories/product/:id' element={<ProductPage />} />
+            <Route path='/home/account' element={<AccountPage />} />
 
 
-        </Route>
+          </Route>
 
 
 
-      </Routes>
+        </Routes>
+      </Provider>
     </>
   );
 }

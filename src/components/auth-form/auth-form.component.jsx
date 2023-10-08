@@ -12,6 +12,15 @@ import {
     signInAuthUserWithEmailAndPassword,
     createAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    LOGIN_START,
+    LOGIN_SUCCESS,
+    LOGIN_ERROR,
+    SIGNUP_START,
+    SIGNUP_SUCCESS,
+    SIGNUP_ERROR
+} from '../../actions/userActions.js';
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { toast } from 'react-toastify';
@@ -29,32 +38,42 @@ const defaultFormFields = {
 
 
 const AuthForm = ({ isRegistered }) => {
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password, confirmPassword } = formFields;
-    const [error, setError] = useState(null);
-    const [isLoading, setisLoading] = useState(null);
+    const currentUser = useSelector(state => state.user.user);
+    const authError = useSelector(state => state.user.authError);
+    const isLoading = useSelector(state => state.user.isLoading);
+    //const [error, setError] = useState(null);
+    //const [isLoading, setisLoading] = useState(null);
     console.log(formFields);
-    const [user] = useAuthState(auth);
+    console.log(currentUser);
+    console.log(authError);
+    console.log(isLoading);
+    //const [user] = useAuthState(auth);
     useEffect(() => {
-        if (user) navigate("/home");
-    }, [user]);
+
+        if (currentUser) navigate("/home");
+    }, [currentUser]);
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     };
 
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        console.log(user);
-        setisLoading(true);
-        await createUserDocumentFromAuth(user);
-        setisLoading(false);
-        toast.success('Successfully logged in !', {
-            position: toast.POSITION.TOP_RIGHT
-        });
-        navigate('/home');
+        dispatch({ type: LOGIN_START });
+        try {
+
+            const { userCred } = await signInWithGooglePopup();
+            await createUserDocumentFromAuth(userCred);
+            navigate('/home');
+            dispatch({ type: LOGIN_SUCCESS, payload: userCred });
+        } catch (error) {
+            dispatch({ type: LOGIN_ERROR, payload: error });
+        }
+
+
     };
 
     const handleChange = (event) => {
@@ -66,33 +85,40 @@ const AuthForm = ({ isRegistered }) => {
     const handleRegistrationSubmit = async (event) => {
         event.preventDefault();
         if (password !== confirmPassword) {
-            setError('Passwords do not match');
+            //setError('Passwords do not match');
+            dispatch({ type: SIGNUP_ERROR, payload: 'Passwords do not match' });
             return;
         }
         if (email && password && confirmPassword === '') {
-            setError('Input field are empty');
+            //setError('Input field are empty');
+            dispatch({ type: SIGNUP_ERROR, payload: 'Input field are empty' });
             return;
         }
+        dispatch({ type: SIGNUP_START });
         try {
-            setisLoading(true);
-            console.log(isLoading);
-            await createAuthUserWithEmailAndPassword(
+
+            //setisLoading(true);
+            //console.log(isLoading);
+            const { userCred } = await createAuthUserWithEmailAndPassword(
                 email,
                 password
             );
-            setError(null);
-            resetFormFields();
-            setisLoading(false);
-            console.log(isLoading);
-
+            // setError(null);
+            // resetFormFields();
+            // setisLoading(false);
+            // console.log(isLoading);
+            dispatch({ type: SIGNUP_SUCCESS, payload: userCred });
         } catch (err) {
-            setisLoading(false);
-            resetFormFields();
+
+            // setisLoading(false);
+            // resetFormFields();
             if (err.code === 'auth/email-already-in-use') {
-                setError('Email already exists');
-                alert('Cannot create user, email already in use');
+                //setError('Email already exists');
+                dispatch({ type: SIGNUP_ERROR, payload: 'Email already exists' });
+                // alert('Cannot create user, email already in use');
             } else {
-                setError('user creation encountered an error');
+                dispatch({ type: SIGNUP_ERROR, payload: 'user creation encountered an error' });
+                //setError('user creation encountered an error');
             }
         }
     };
@@ -100,55 +126,62 @@ const AuthForm = ({ isRegistered }) => {
     const handleSignInSubmit = async (event) => {
         event.preventDefault();
         if (email === "" && password === "") {
-            setError('Input fields are empty');
+            //setError('Input fields are empty');
             return;
         }
+        dispatch({ type: LOGIN_START });
         try {
 
-            setisLoading(true);
-            await signInAuthUserWithEmailAndPassword(
+            //setisLoading(true);
+            const { userCred } = await signInAuthUserWithEmailAndPassword(
                 email,
                 password
             );
-            console.log(isLoading);
+            dispatch({ type: LOGIN_SUCCESS, payload: userCred });
+            //console.log(isLoading);
 
             resetFormFields();
-            setError(null);
-            setisLoading(false);
-            console.log(isLoading);
+            //setError(null);
+            //setisLoading(false);
+            //console.log(isLoading);
 
 
 
         } catch (err) {
-            setisLoading(false);
+            dispatch({ type: LOGIN_ERROR, payload: err });
+            //setisLoading(false);
 
             switch (err.code) {
                 case 'auth/wrong-password':
-                    setError('Wrong Email or Password');
+                    dispatch({ type: SIGNUP_ERROR, payload: 'Wrong Email or Password' });
+                    //setError('Wrong Email or Password');
                     break;
                 case 'auth/user-not-found':
-                    setError('Invalid Credentials');
+                    dispatch({ type: SIGNUP_ERROR, payload: 'Invalid Credentials' });
+                    //setError('Invalid Credentials');
                     break;
                 default:
-                    setError('Invalid Credentials');
+                    //setError('Invalid Credentials');
+                    dispatch({ type: SIGNUP_ERROR, payload: 'Invalid Credentials' });
+
 
             }
         }
     };
 
     const clearError = () => {
-        setError(null);
+        dispatch({ type: LOGIN_ERROR, payload: null });
     };
 
 
     return (
 
         <form className="auth-form" onSubmit={!isRegistered ? handleRegistrationSubmit : handleSignInSubmit}>
-            {isLoading ? <LoadingSpinner loading={isLoading} /> : null}
-            {error ?
-                <ErrorDisplay errorMessage={error} clearError={clearError} />
+            {isLoading ? <LoadingSpinner isLoading={isLoading} /> : null}
+            {authError ?
+                <ErrorDisplay errorMessage={authError} clearError={clearError} />
                 : null}
-
+            {console.log(isLoading)}
             <div className="auth-form-header">
                 {isRegistered ? <h2 className="auth-form-header-title">Log In</h2> : <h2 className="auth-form-header">Register</h2>}
                 <p className="auth-form-header-subtitle">Complete your details or continue using social media</p>

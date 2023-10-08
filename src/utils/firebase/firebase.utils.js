@@ -38,9 +38,13 @@ googleProvider.setCustomParameters({
 
 export const auth = getAuth(firebaseApp);
 
-export const signInWithGooglePopup = () =>
-    signInWithPopup(auth, googleProvider);
-
+export const signInWithGooglePopup = async () => {
+    const res = await signInWithPopup(auth, googleProvider);
+    const user = res.user;
+    return {
+        userCred: user,
+    }
+}
 
 
 export const db = getFirestore(firebaseApp);
@@ -82,11 +86,17 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    return await addDoc(collection(db, "users"), {
+    console.log("Auth Response:", res);
+    if (!user) throw new Error("Failed to create user.");
+    const docRef = await addDoc(collection(db, "users"), {
         uid: user.uid,
         name: email,
 
     });
+    return {
+        userCred: user,
+        newDocId: docRef.id
+    };
 
 };
 
@@ -94,8 +104,11 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password) return;
-
-    return await signInWithEmailAndPassword(auth, email, password);
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    return {
+        userCred: user,
+    }
 
 };
 
