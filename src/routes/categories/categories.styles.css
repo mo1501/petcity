@@ -1,24 +1,25 @@
-.food-category-container{
+.category-container{
+    margin: 10px;
     padding: 5px;
+    height: 500px;
      
     
 }
-.food-category-container h2{
-    padding-bottom: 1px;
-    margin-left: 20px;
-    margin-bottom: 1px;
+.category-container h2{
+    margin: 10px;
     font-weight: 500;
      
     
 }
 
-.food-section {
+.products-section {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
     padding: 10px;
     overflow-x: auto;
 }
-.food-section::-webkit-scrollbar {
+.products-section::-webkit-scrollbar {
     display: none;
   }

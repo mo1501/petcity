@@ -1,78 +1,55 @@
-import React from "react";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductsAsync } from '../../utils/firebase/firebase.utils.js';
 
 
 
 import "./categories.styles.css";
-import products from "../../assets/utilities/productdata.js"
 import ProductCard2 from "../../components/product-card2/productcard2.component";
 import Footer from "../../components/footer/footer.component";
+import LoadingSpinner from "../../components/loading-spinner/loading-spinner.component";
+
+
 
 
 
 
 const CategoriesPage = () => {
+    const dispatch = useDispatch();
+    const products = useSelector(state => state.products.products);
+    const isProductsLoading = useSelector(state => state.products.isProductsLoading);
+    const categories = ["toy", "food", "medicines", "accessories"];
+
+    useEffect(() => {
+
+        dispatch(fetchProductsAsync()); // dispatch the async action here
+
+    }, [dispatch]);
+
+    const renderProductsForCategory = (categoryName) => {
+        const filteredProducts = products.filter(product => product.category === categoryName);
+        return filteredProducts.map((product, index) => (
+            <ProductCard2 key={product.id} product={product} index={index} />
+        ));
+    };
     return (
-
-
         <div>
-            <div className="food-category-container">
-                <h2>Food</h2>
-                <div className="food-section">
-
-                    <ProductCard2 product={products} index={0} />
-                    <ProductCard2 product={products} index={0} />
-                    <ProductCard2 product={products} index={0} />
-                    <ProductCard2 product={products} index={0} />
-                    <ProductCard2 product={products} index={0} />
-
-                </div>
-            </div>
-
-            <div className="food-category-container">
-                <h2>Toys</h2>
-                <div className="food-section">
-
-                    <ProductCard2 product={products} index={1} />
-                    <ProductCard2 product={products} index={1} />
-                    <ProductCard2 product={products} index={1} />
-                    <ProductCard2 product={products} index={1} />
-                    <ProductCard2 product={products} index={1} />
-
-                </div>
-            </div>
-
-
-            <div className="food-category-container">
-                <h2>Accessories</h2>
-                <div className="food-section">
-
-                    <ProductCard2 product={products} index={2} />
-                    <ProductCard2 product={products} index={2} />
-                    <ProductCard2 product={products} index={2} />
-                    <ProductCard2 product={products} index={2} />
-                    <ProductCard2 product={products} index={2} />
-
-                </div>
-            </div>
-
-            <div className="food-category-container">
-                <h2>Medicines</h2>
-                <div className="food-section">
-
-                    <ProductCard2 product={products} index={3} />
-                    <ProductCard2 product={products} index={3} />
-                    <ProductCard2 product={products} index={3} />
-                    <ProductCard2 product={products} index={3} />
-                    <ProductCard2 product={products} index={3} />
-
-                </div>
-            </div>
-
+            {isProductsLoading ? <LoadingSpinner loading={isProductsLoading} /> : null}
+            {
+                categories.map(category => (
+                    <div className="category-container" key={category}>
+                        <h2>{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+                        <div className="products-section">
+                            {renderProductsForCategory(category)}
+                        </div>
+                    </div>
+                ))
+            }
             <footer className="footer">
                 <Footer />
             </footer>
-
         </div>
+
 
 
 

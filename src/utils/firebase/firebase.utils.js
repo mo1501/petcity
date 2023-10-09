@@ -1,4 +1,6 @@
 import { initializeApp } from 'firebase/app';
+import { FINISHED_FETCHING_PRODUCTS, START_FETCHING_PRODUCTS, setProducts } from '../../actions/productActions.js'; // import the action creator
+
 import {
     getAuth,
 
@@ -10,7 +12,7 @@ import {
     sendPasswordResetEmail
 
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc, addDoc, collection }
+import { getFirestore, doc, getDoc, getDocs, setDoc, addDoc, collection }
     from 'firebase/firestore';
 import { getStorage } from "firebase/storage";
 
@@ -132,4 +134,26 @@ export const changePassowrd = async (email) => {
 
 
 }
+
+
+
+export const fetchProductsAsync = () => {
+    const productsLoadStart = () => ({ type: START_FETCHING_PRODUCTS });
+    const categories = ["toy", "food", "medicines", "accessories"];
+    return async (dispatch, getState) => {
+        dispatch(productsLoadStart());
+        let allProducts = [];
+
+        for (let category of categories) {
+            const productsCollection = collection(db, category); // Fetching products by category
+            const productSnapshot = await getDocs(productsCollection);
+            const productList = productSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+            allProducts = allProducts.concat(productList);
+        }
+
+        await dispatch(setProducts(allProducts));  // Dispatch the action to update the Redux store
+        dispatch({ type: FINISHED_FETCHING_PRODUCTS });
+
+    }
+};
 
