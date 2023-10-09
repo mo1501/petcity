@@ -6,9 +6,7 @@ import SocialsPanel from "../socials/socials.component.jsx";
 import LoadingSpinner from "../loading-spinner/loading-spinner.component.jsx";
 import { useNavigate } from 'react-router-dom';
 import {
-    auth,
     signInWithGooglePopup,
-    createUserDocumentFromAuth,
     signInAuthUserWithEmailAndPassword,
     createAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
@@ -21,9 +19,9 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_ERROR
 } from '../../actions/userActions.js';
-import { useAuthState } from "react-firebase-hooks/auth";
 
-import { toast } from 'react-toastify';
+
+
 import 'react-toastify/dist/ReactToastify.css';
 
 import "./auth-form.styles.css";
@@ -44,18 +42,13 @@ const AuthForm = ({ isRegistered }) => {
     const { email, password, confirmPassword } = formFields;
     const currentUser = useSelector(state => state.user.user);
     const authError = useSelector(state => state.user.authError);
-    const isLoading = useSelector(state => state.user.isLoading);
-    //const [error, setError] = useState(null);
-    //const [isLoading, setisLoading] = useState(null);
-    console.log(formFields);
-    console.log(currentUser);
-    console.log(authError);
-    console.log(isLoading);
-    //const [user] = useAuthState(auth);
-    useEffect(() => {
+    const isloading = useSelector(state => state.user.isloading);
 
+    console.log(formFields);
+
+    useEffect(() => {
         if (currentUser) navigate("/home");
-    }, [currentUser]);
+    }, [currentUser, navigate]);
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -64,16 +57,15 @@ const AuthForm = ({ isRegistered }) => {
     const signInWithGoogle = async () => {
         dispatch({ type: LOGIN_START });
         try {
-
             const { userCred } = await signInWithGooglePopup();
-            await createUserDocumentFromAuth(userCred);
-            navigate('/home');
             dispatch({ type: LOGIN_SUCCESS, payload: userCred });
+            navigate('/home');
         } catch (error) {
-            dispatch({ type: LOGIN_ERROR, payload: error });
+            if (error.code === "auth/popup-closed-by-user") {
+                dispatch({ type: LOGIN_ERROR, payload: 'You closed the popup' });
+            }
+            //dispatch({ type: LOGIN_ERROR, payload: error.code });
         }
-
-
     };
 
     const handleChange = (event) => {
@@ -85,40 +77,26 @@ const AuthForm = ({ isRegistered }) => {
     const handleRegistrationSubmit = async (event) => {
         event.preventDefault();
         if (password !== confirmPassword) {
-            //setError('Passwords do not match');
             dispatch({ type: SIGNUP_ERROR, payload: 'Passwords do not match' });
             return;
         }
         if (email && password && confirmPassword === '') {
-            //setError('Input field are empty');
             dispatch({ type: SIGNUP_ERROR, payload: 'Input field are empty' });
             return;
         }
         dispatch({ type: SIGNUP_START });
         try {
-
-            //setisLoading(true);
-            //console.log(isLoading);
             const { userCred } = await createAuthUserWithEmailAndPassword(
                 email,
                 password
             );
-            // setError(null);
-            // resetFormFields();
-            // setisLoading(false);
-            // console.log(isLoading);
+
             dispatch({ type: SIGNUP_SUCCESS, payload: userCred });
         } catch (err) {
-
-            // setisLoading(false);
-            // resetFormFields();
             if (err.code === 'auth/email-already-in-use') {
-                //setError('Email already exists');
                 dispatch({ type: SIGNUP_ERROR, payload: 'Email already exists' });
-                // alert('Cannot create user, email already in use');
             } else {
                 dispatch({ type: SIGNUP_ERROR, payload: 'user creation encountered an error' });
-                //setError('user creation encountered an error');
             }
         }
     };
@@ -126,45 +104,27 @@ const AuthForm = ({ isRegistered }) => {
     const handleSignInSubmit = async (event) => {
         event.preventDefault();
         if (email === "" && password === "") {
-            //setError('Input fields are empty');
             return;
         }
         dispatch({ type: LOGIN_START });
         try {
-
-            //setisLoading(true);
             const { userCred } = await signInAuthUserWithEmailAndPassword(
                 email,
                 password
             );
             dispatch({ type: LOGIN_SUCCESS, payload: userCred });
-            //console.log(isLoading);
-
             resetFormFields();
-            //setError(null);
-            //setisLoading(false);
-            //console.log(isLoading);
-
-
-
         } catch (err) {
             dispatch({ type: LOGIN_ERROR, payload: err });
-            //setisLoading(false);
-
             switch (err.code) {
                 case 'auth/wrong-password':
                     dispatch({ type: SIGNUP_ERROR, payload: 'Wrong Email or Password' });
-                    //setError('Wrong Email or Password');
                     break;
                 case 'auth/user-not-found':
                     dispatch({ type: SIGNUP_ERROR, payload: 'Invalid Credentials' });
-                    //setError('Invalid Credentials');
                     break;
                 default:
-                    //setError('Invalid Credentials');
                     dispatch({ type: SIGNUP_ERROR, payload: 'Invalid Credentials' });
-
-
             }
         }
     };
@@ -177,11 +137,11 @@ const AuthForm = ({ isRegistered }) => {
     return (
 
         <form className="auth-form" onSubmit={!isRegistered ? handleRegistrationSubmit : handleSignInSubmit}>
-            {isLoading ? <LoadingSpinner isLoading={isLoading} /> : null}
+            {isloading ? <LoadingSpinner isLoading={isloading} /> : null}
             {authError ?
                 <ErrorDisplay errorMessage={authError} clearError={clearError} />
                 : null}
-            {console.log(isLoading)}
+
             <div className="auth-form-header">
                 {isRegistered ? <h2 className="auth-form-header-title">Log In</h2> : <h2 className="auth-form-header">Register</h2>}
                 <p className="auth-form-header-subtitle">Complete your details or continue using social media</p>
@@ -203,7 +163,7 @@ const AuthForm = ({ isRegistered }) => {
                 Log in with social media
             </span>}
 
-            <SocialsPanel />
+            <SocialsPanel onClickFunction={signInWithGoogle} />
             <p className="auth-form-header-subtitle">By continuing you are confirming that you agree with our Terms and Conditions</p>
 
         </form>

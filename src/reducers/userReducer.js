@@ -31,7 +31,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
         case 'SIGN_OUT':
             return {
                 ...state,
-                user: null
+                user: null,
+                isloading: false,
             };
         case 'SIGNUP_START':
             return {
@@ -51,6 +52,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 authError: action.payload,
+                isloading: false,
             };
         default:
             return state;

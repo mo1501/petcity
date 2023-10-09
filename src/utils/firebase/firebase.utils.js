@@ -39,10 +39,17 @@ googleProvider.setCustomParameters({
 export const auth = getAuth(firebaseApp);
 
 export const signInWithGooglePopup = async () => {
-    const res = await signInWithPopup(auth, googleProvider);
-    const user = res.user;
-    return {
-        userCred: user,
+    try {
+        const res = await signInWithPopup(auth, googleProvider);
+        const user = res.user;
+        const userDoc = await createUserDocumentFromAuth(user);
+        return {
+            userCred: user,
+            userDoc: userDoc,
+        }
+    } catch (error) {
+        console.error("Error during Google Sign-In:", error);
+        throw error; // Re-throw the error so that it can be caught and handled by the caller
     }
 }
 
