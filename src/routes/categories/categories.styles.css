@@ -1,25 +1,38 @@
+.category-page{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
 .category-container{
-    margin: 10px;
-    padding: 5px;
-    height: 500px;
+
+    width: 50%;
+    height: 20%;
+    align-items: flex-start;
+    
      
     
 }
+.products-section{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: scroll;       /* Allow horizontal scrolling */
+    
+   
+
+
+}
 .category-container h2{
-    margin: 10px;
+    margin: 2px;
     font-weight: 500;
      
     
 }
 
-.products-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px;
-    overflow-x: auto;
-}
+
 .products-section::-webkit-scrollbar {
     display: none;
   }

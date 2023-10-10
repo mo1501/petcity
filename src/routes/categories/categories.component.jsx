@@ -33,7 +33,7 @@ const CategoriesPage = () => {
         ));
     };
     return (
-        <div>
+        <div className='category-page'>
             {isProductsLoading ? <LoadingSpinner loading={isProductsLoading} /> : null}
             {
                 categories.map(category => (
@@ -45,9 +45,9 @@ const CategoriesPage = () => {
                     </div>
                 ))
             }
-            <footer className="footer">
-                <Footer />
-            </footer>
+
+            <Footer />
+
         </div>
 
 

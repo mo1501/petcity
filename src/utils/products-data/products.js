@@ -93,7 +93,7 @@ async function generateProducts() {
     for (let cat of categories) {
         for (let i = 0; i < 10; i++) {
             const productName = getProductName(cat, i);
-            const storageImagePath = `petstore-images/${cat}/image${i + 1}.jpg`; // We use i+1 because array indices start at 0 but your images probably start at 1
+            const storageImagePath = `petstore-images/${cat}/image${i + 1}.png`; // We use i+1 because array indices start at 0 but your images probably start at 1
             const imageUrl = await getImageURLFromStorage(storageImagePath);
 
             products.push({

@@ -142,18 +142,23 @@ export const fetchProductsAsync = () => {
     const categories = ["toy", "food", "medicines", "accessories"];
     return async (dispatch, getState) => {
         dispatch(productsLoadStart());
-        let allProducts = [];
 
-        for (let category of categories) {
+        // Create an array of promises
+        const promises = categories.map(async category => {
             const productsCollection = collection(db, category); // Fetching products by category
             const productSnapshot = await getDocs(productsCollection);
-            const productList = productSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-            allProducts = allProducts.concat(productList);
-        }
+            return productSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id, category }));
+        });
 
-        await dispatch(setProducts(allProducts));  // Dispatch the action to update the Redux store
+        // Wait for all promises to resolve
+        const results = await Promise.all(promises);
+
+        // Flatten the results into a single array
+        const allProducts = [].concat(...results);
+
+        dispatch(setProducts(allProducts));  // Dispatch the action to update the Redux store
         dispatch({ type: FINISHED_FETCHING_PRODUCTS });
-
     }
 };
+
 
