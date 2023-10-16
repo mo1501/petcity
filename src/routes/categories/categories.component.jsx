@@ -38,7 +38,7 @@ const CategoriesPage = () => {
             {
                 categories.map(category => (
                     <div className="category-container" key={category}>
-                        <h2>{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+                        <p className='category-title'>{category.charAt(0).toUpperCase() + category.slice(1)}</p>
                         <div className="products-section">
                             {renderProductsForCategory(category)}
                         </div>

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { FINISHED_FETCHING_PRODUCTS, START_FETCHING_PRODUCTS, setProducts } from '../../actions/productActions.js'; // import the action creator
+import { FINISHED_FETCHING_PRODUCTS, START_FETCHING_PRODUCTS, setProducts } from '../../state/actions/productActions.js'; // import the action creator
 
 import {
     getAuth,

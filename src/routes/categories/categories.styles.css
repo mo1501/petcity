@@ -2,12 +2,13 @@
     width: fit-content;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
     
     
 }
 .category-container{
 
-    width: 50%;
+    width: 1450px;
     height: 20%;
     align-items: flex-start;
     
@@ -20,18 +21,18 @@
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: scroll;       /* Allow horizontal scrolling */
+    flex-wrap: nowrap;
     
    
 
 
 }
-.category-container h2{
-    margin: 2px;
-    font-weight: 500;
-     
-    
+.category-title{
+    margin-left: 5px;
+    margin-bottom: 0px;
+    font-weight: 600;
+    font-size: 28px;
 }
-
 
 .products-section::-webkit-scrollbar {
     display: none;

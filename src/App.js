@@ -3,7 +3,7 @@ import './App.css';
 import { createGlobalStyle } from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './store/store.js';
+import store from './state/store/store.js';
 import NavBar from './routes/navbar/navbar.component.jsx';
 import HomePage from './routes/home/home.component.jsx';
 import CategoriesPage from './routes/categories/categories.component.jsx';

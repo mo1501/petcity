@@ -1,0 +1,7 @@
+.star {
+    font-size: 24px; /* Adjust the size as needed */
+    margin-right: -25px; /* Adjust the negative margin to bring stars closer */
+    margin-left: 0px;
+    padding-right: 25px;
+    padding-left: 0px;
+}

@@ -18,7 +18,7 @@ import {
     SIGNUP_START,
     SIGNUP_SUCCESS,
     SIGNUP_ERROR
-} from '../../actions/userActions.js';
+} from '../../state/actions/userActions.js';
 
 
 

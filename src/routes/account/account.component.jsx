@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-import { SIGNOUT } from "../../actions/userActions";
+import { SIGNOUT } from "../../state/actions/userActions";
 
 
 const AccountPage = () => {
