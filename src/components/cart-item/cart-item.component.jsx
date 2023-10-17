@@ -30,17 +30,17 @@ const CartItem = ({ cartProduct }) => {
             });
         }
     };
-    
+
     return (
 
         <div className="cart-item">
             <div className="cart-image-section">
-                <img className='cart-image' src={cartProduct.image} alt="" />
+                <img className='cart-image' src={cartProduct.imageUrl} alt="" />
             </div>
             <div className="cart-description-section">
                 <div className="cart-description">
                     <p className="product-name">{cartProduct.name}</p>
-                    <p className="product-desription">{cartProduct.description}</p>
+                    <p className="product-desription">{cartProduct.shortDescription}</p>
                     <QuantityPicker
                         quantity={cartProduct.quantity}
                         onIncrement={handleIncrement}
@@ -48,7 +48,7 @@ const CartItem = ({ cartProduct }) => {
                     />
                 </div>
                 <div className="cart-end">
-                    <p className="product-price">${cartProduct.price}</p>
+                    <p className="product-price">${cartProduct.price/100}</p>
                     <DeleteIcon />
                 </div>
 

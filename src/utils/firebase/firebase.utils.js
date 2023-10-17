@@ -89,25 +89,29 @@ export const createUserDocumentFromAuth = async (
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
-    if (!email || !password);
-
-    // return await createUserWithEmailAndPassword(auth, email, password);
+    if (!email || !password) return;
 
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     console.log("Auth Response:", res);
+
     if (!user) throw new Error("Failed to create user.");
-    const docRef = await addDoc(collection(db, "users"), {
+
+    // Reference to the user document with the uid as the document ID
+    const userDocRef = doc(db, "users", user.uid);
+
+    await setDoc(userDocRef, {
         uid: user.uid,
         name: email,
-
+        cart: [],
     });
+
     return {
         userCred: user,
-        newDocId: docRef.id
+        newDocId: user.uid  // The UID is now the document ID
     };
-
 };
+
 
 
 

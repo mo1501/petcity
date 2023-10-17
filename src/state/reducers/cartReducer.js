@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     cartItems: [],
     cartError: null,
+    isCartLoading: false,
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -16,15 +17,18 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 updatedCartItems[existingProductIndex].quantity += action.payload.quantity;
                 return {
                     ...state,
-                    cartItems: updatedCartItems
+                    cartItems: updatedCartItems,
+
                 };
             } else {
                 // If product doesn't exist in cart, add it
                 return {
                     ...state,
+
                     cartItems: [...state.cartItems, action.payload]
                 };
             }
+
 
         case 'UPDATE_ITEM_QUANTITY':
             return {
@@ -34,6 +38,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                         ? { ...item, quantity: action.payload.quantity }
                         : item
                 )
+            };
+        case 'SET_CART':
+            return {
+                ...state,
+                cartItems: action.payload
             };
 
         case 'REMOVE_FROM_CART':
@@ -46,6 +55,18 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 cartItems: [],
+            };
+
+        case 'CART_OPERATION_START':
+            return {
+                ...state,
+                isCartLoading: true,
+            };
+
+        case 'CART_OPERATION_END':
+            return {
+                ...state,
+                isCartLoading: false,
             };
 
         case 'CART_ERROR':
