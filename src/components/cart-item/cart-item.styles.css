@@ -1,7 +1,7 @@
 .cart-item {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin: 5px;
     padding: 5px;
@@ -54,17 +54,17 @@
 }
 
 .product-price{
-
+    font-size: large;
     margin-bottom: 0px;
 }
 
 .cart-end {
     display: flex;
-
+    margin: 2px;
     flex-direction: column;
     justify-content: space-between;
     height: 120px;
-    flex-basis: 10%;
+    flex-basis: 50%;
     align-items: flex-end;
     
 }

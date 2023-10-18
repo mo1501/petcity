@@ -7,7 +7,7 @@ import PaymentMethodContainer from "../payment-method/payment-method.component.j
 import TextfieldComponent from "../textfield/textfield.component.jsx";
 
 
-const CheckoutPane = () => {
+const CheckoutPane = ({cartTotal}) => {
 
     return (
 
@@ -24,7 +24,7 @@ const CheckoutPane = () => {
             <div className="checkout-price-button-section">
                 <div className="price-container">
                     <p className="total">Total:</p>
-                    <p className="price">$79.99</p>
+                    <p className="price">${cartTotal/100}</p>
                 </div>
                 <div className="checkout-button">
                     <p className="checkout-label">Checkout</p>

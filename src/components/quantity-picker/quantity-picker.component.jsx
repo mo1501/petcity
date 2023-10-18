@@ -12,23 +12,15 @@ import "./quantity-picker.styles.css";
 
 
 
-const QuantityPicker = ({ quantity, setQuantity }) => {
-    const increment = () => {
-        setQuantity(prevQuantity => prevQuantity + 1);
-    };
-
-    const decrement = () => {
-        if (quantity > 0) {
-            setQuantity(prevQuantity => prevQuantity - 1);
-        }
-    };
+const QuantityPicker = ({ quantity, onIncrement, onDecrement }) => {
+    
     return (
 
         <div className="quantity-picker">
 
-            <Minus className="minus-button" onClick={decrement} />
+            <Minus className="minus-button" onClick={onDecrement} />
             <p className="quantity">{quantity}</p>
-            <Plus className="plus-button" onClick={increment} />
+            <Plus className="plus-button" onClick={onIncrement} />
 
 
 

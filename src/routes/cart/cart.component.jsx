@@ -1,29 +1,20 @@
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, checkout, removeFromCart } from '../../state/actions/cartActions';
+import { useSelector } from 'react-redux';
+
 import CartItem from "../../components/cart-item/cart-item.component";
 import CheckoutPane from "../../components/checkout-pane/checkout-pane.component";
+import { BeatLoader } from "react-spinners";
 
 import "./cart.styles.css";
 
 const CartPage = () => {
 
-    const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.cartItems);
+    const isCartLoading = useSelector(state => state.cart.isCartLoading);
+    const cartItemCount = useSelector(state => state.cart.cartItemCount);
+    const cartTotal = useSelector(state => state.cart.cartTotal);
     const userId = useSelector(state => state.user.user);
-
-    const handleAddToCart = (product) => {
-        dispatch(addToCart(product));
-    };
-
-    const handleCheckout = () => {
-        dispatch(checkout(userId, cartItems));
-    };
-
-    const handleRemoveFromCart = (productId) => {
-        dispatch(removeFromCart(productId));
-    };
 
     useEffect(() => {
         // Add the no-scroll class to the body when the component mounts
@@ -38,21 +29,23 @@ const CartPage = () => {
 
 
         <>
-            
+
             <div className="cart-header">
                 <p className="cart-title">CART</p>
-                <p className="cart-subtitle">You have 4 items in your cart</p>
+                <p className="cart-subtitle">You have {cartItemCount} items in your cart</p>
             </div>
+            <div className="cart-page-loading-spinner">{isCartLoading ? <BeatLoader size={0.2} color={"#F38385"} /> : null}</div>
             <div className="cartpage-content">
+                
                 <div className="cartitems-section">
                     {
                         cartItems.map(cartProduct => (
-                            <CartItem key={cartProduct.id} cartProduct={cartProduct} />
+                            <CartItem key={cartProduct.id} cartProduct={cartProduct} userId={userId.uid} />
                         ))
                     }
                 </div>
                 <div className="checkout-section">
-                    <CheckoutPane />
+                    <CheckoutPane cartTotal={cartTotal}/>
                 </div>
             </div>
 

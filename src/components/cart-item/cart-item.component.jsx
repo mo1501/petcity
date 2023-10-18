@@ -1,35 +1,39 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { updateItemQuantityFirestore, removeItemFromCartFirestore } from "../../state/actions/cartActions";
 import QuantityPicker from "../quantity-picker/quantity-picker.component";
 import { ReactComponent as DeleteIcon } from '../../assets/images-svgs/trash-vector.svg';
 
+
+
 import "./cart-item.styles.css";
 
-const CartItem = ({ cartProduct }) => {
+const CartItem = ({ cartProduct, userId }) => {
     const dispatch = useDispatch();
 
+
     const handleIncrement = () => {
-        dispatch({
-            type: 'UPDATE_ITEM_QUANTITY',
-            payload: {
-                itemId: cartProduct.id,
-                quantity: cartProduct.quantity + 1
-            }
-        });
+        const newQuantity = cartProduct.quantity + 1;
+        dispatch(updateItemQuantityFirestore(userId, cartProduct.id, newQuantity));
     };
 
     const handleDecrement = () => {
-        if (cartProduct.quantity > 0) {
-            dispatch({
-                type: 'UPDATE_ITEM_QUANTITY',
-                payload: {
-                    itemId: cartProduct.id,
-                    quantity: cartProduct.quantity - 1
-                }
-            });
+        const newQuantity = cartProduct.quantity - 1;
+        if (newQuantity === 0) {
+            if (window.confirm(`Are you sure you want to remove ${cartProduct.name} from your cart?`)) {
+                dispatch(removeItemFromCartFirestore(userId, cartProduct.id));
+            }
+        } else {
+            dispatch(updateItemQuantityFirestore(userId, cartProduct.id, newQuantity));
         }
     };
+
+    const handleDelete = () => {
+        if (window.confirm(`Are you sure you want to remove ${cartProduct.name} from your cart?`)) {
+            dispatch(removeItemFromCartFirestore(userId, cartProduct.id));
+        }
+    };
+
 
     return (
 
@@ -41,6 +45,7 @@ const CartItem = ({ cartProduct }) => {
                 <div className="cart-description">
                     <p className="product-name">{cartProduct.name}</p>
                     <p className="product-desription">{cartProduct.shortDescription}</p>
+
                     <QuantityPicker
                         quantity={cartProduct.quantity}
                         onIncrement={handleIncrement}
@@ -48,8 +53,8 @@ const CartItem = ({ cartProduct }) => {
                     />
                 </div>
                 <div className="cart-end">
-                    <p className="product-price">${cartProduct.price/100}</p>
-                    <DeleteIcon />
+                    <p className="product-price">${cartProduct.price / 100 * cartProduct.quantity}</p>
+                    <DeleteIcon onClick={handleDelete} />
                 </div>
 
             </div>

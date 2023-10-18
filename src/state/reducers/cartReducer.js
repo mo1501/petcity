@@ -1,60 +1,71 @@
 const INITIAL_STATE = {
     cartItems: [],
+    cartTotal: 0,
+    cartItemCount: 0,
     cartError: null,
     isCartLoading: false,
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
+    let newState;
     switch (action.type) {
         case 'ADD_TO_CART':
             const existingProductIndex = state.cartItems.findIndex(
                 item => item.id === action.payload.id
             );
 
+            let updatedCartItems;
+
             if (existingProductIndex >= 0) {
                 // If the product exists, update its quantity
-                const updatedCartItems = [...state.cartItems];
+                updatedCartItems = [...state.cartItems];
                 updatedCartItems[existingProductIndex].quantity += action.payload.quantity;
-                return {
-                    ...state,
-                    cartItems: updatedCartItems,
-
-                };
             } else {
                 // If product doesn't exist in cart, add it
-                return {
-                    ...state,
-
-                    cartItems: [...state.cartItems, action.payload]
-                };
+                updatedCartItems = [...state.cartItems, action.payload];
             }
 
+            newState = {
+                ...state,
+                cartItems: updatedCartItems,
+            };
+            break;
 
         case 'UPDATE_ITEM_QUANTITY':
-            return {
+            updatedCartItems = state.cartItems.map(item =>
+                item.id === action.payload.itemId
+                    ? { ...item, quantity: action.payload.quantity }
+                    : item
+            );
+
+            newState = {
                 ...state,
-                cartItems: state.cartItems.map(item =>
-                    item.id === action.payload.itemId
-                        ? { ...item, quantity: action.payload.quantity }
-                        : item
-                )
+                cartItems: updatedCartItems,
             };
+            break;
+
         case 'SET_CART':
-            return {
+            newState = {
                 ...state,
-                cartItems: action.payload
+                cartItems: action.payload,
             };
+            break;
 
         case 'REMOVE_FROM_CART':
-            return {
+            updatedCartItems = state.cartItems.filter(item => item.id !== action.payload);
+
+            newState = {
                 ...state,
-                cartItems: state.cartItems.filter(item => item.id !== action.payload),
+                cartItems: updatedCartItems,
             };
+            break;
 
         case 'CLEAR_CART':
             return {
                 ...state,
                 cartItems: [],
+                cartTotal: 0,
+                cartItemCount: 0,
             };
 
         case 'CART_OPERATION_START':
@@ -78,5 +89,13 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         default:
             return state;
     }
+    if (newState) {
+        newState.cartTotal = newState.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        newState.cartItemCount = newState.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+        return newState;
+    }
+
+    return state;
 };
+
 export default cartReducer;

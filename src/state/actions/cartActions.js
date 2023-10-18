@@ -1,6 +1,6 @@
 import { db } from '../../utils/firebase/firebase.utils.js';
 import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { getFirestore, doc, setDoc,getDoc,updateDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 
 // Action types
 export const ADD_TO_CART = 'ADD_TO_CART';
@@ -14,7 +14,7 @@ export const CART_OPERATION_END = 'CART_OPERATION_END';
 
 
 // Action creators
-export const addToCart = (product,userId, quantity = 1) => {
+export const addToCart = (product, userId, quantity = 1) => {
     return async dispatch => {
         try {
             // Reference to the user document
@@ -72,6 +72,87 @@ export const updateItemQuantity = (itemId, quantity) => ({
     type: UPDATE_ITEM_QUANTITY,
     payload: { itemId, quantity }
 });
+
+export const updateItemQuantityFirestore = (userId, itemId, newQuantity) => {
+    return async dispatch => {
+        dispatch({ type: CART_OPERATION_START });
+        try {
+            // Reference to the user document
+            const userDocRef = doc(db, 'users', userId);
+
+            // Get the current user document
+            const userDocSnapshot = await getDoc(userDocRef);
+
+            if (userDocSnapshot.exists()) {
+                const currentCart = userDocSnapshot.data().cart || [];
+
+                const itemIndex = currentCart.findIndex(item => item.id === itemId);
+
+                if (itemIndex >= 0) {
+                    currentCart[itemIndex].quantity = newQuantity;
+
+                    if (currentCart[itemIndex].quantity <= 0) {
+                        // If quantity drops to 0 or less, remove the item from the cart
+                        currentCart.splice(itemIndex, 1);
+                    }
+
+                    // Update cart in Firestore
+                    await updateDoc(userDocRef, { cart: currentCart });
+
+                    // Dispatch updated cart to Redux store
+                    dispatch({
+                        type: SET_CART,
+                        payload: currentCart,
+                    });
+                } else {
+                    console.error("Item not found in cart!");
+                }
+            } else {
+                console.error("User does not exist!");
+            }
+            dispatch({ type: CART_OPERATION_END });
+        } catch (error) {
+            console.error("Error updating item quantity in Firestore:", error);
+            dispatch({ type: CART_ERROR, payload: error });
+        }
+    }
+};
+
+export const removeItemFromCartFirestore = (userId, itemId) => {
+    return async dispatch => {
+        dispatch({ type: CART_OPERATION_START });
+        try {
+            // Reference to the user document
+            const userDocRef = doc(db, 'users', userId);
+
+            // Get the current user document
+            const userDocSnapshot = await getDoc(userDocRef);
+
+            if (userDocSnapshot.exists()) {
+                const currentCart = userDocSnapshot.data().cart || [];
+
+                const updatedCart = currentCart.filter(item => item.id !== itemId);
+
+                // Update cart in Firestore
+                await updateDoc(userDocRef, { cart: updatedCart });
+
+                // Dispatch updated cart to Redux store
+                dispatch({
+                    type: SET_CART,
+                    payload: updatedCart,
+                });
+            } else {
+                console.error("User does not exist!");
+            }
+            dispatch({ type: CART_OPERATION_END });
+        } catch (error) {
+            console.error("Error removing item from cart in Firestore:", error);
+            dispatch({ type: CART_ERROR, payload: error });
+        }
+    }
+};
+
+
 export const cartOperationStart = () => ({
     type: CART_OPERATION_START,
 });
@@ -118,7 +199,7 @@ export const loadUserCart = (userId) => {
 
             if (userDocSnapshot.exists()) {
                 const currentCart = userDocSnapshot.data().cart || [];
-                
+
                 // Dispatch an action to set this cart in Redux state
                 dispatch({
                     type: SET_CART,

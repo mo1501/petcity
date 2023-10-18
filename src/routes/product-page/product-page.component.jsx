@@ -8,6 +8,7 @@ import "./product-page.styles.css";
 import Footer from "../../components/footer/footer.component";
 
 import StarRating from "../../components/star-rating/star-rating.component";
+import { BeatLoader } from "react-spinners";
 import LoadingSpinner from "../../components/loading-spinner/loading-spinner.component";
 
 
@@ -22,10 +23,10 @@ const ProductPage = () => {
     const isCartLoading = useSelector(state => state.cart.isCartLoading);
     
 
-    const handleAddToCartClick = (product) => {
+    const handleAddToCartClick = async (product) => {
         try {
             dispatch(cartOperationStart());
-            dispatch(addToCart(product, currentUserId));
+            await dispatch(addToCart(product, currentUserId));
             dispatch(cartOperationEnd());
         } catch (error) {
             dispatch(CART_ERROR, error);
@@ -61,7 +62,7 @@ const ProductPage = () => {
                                 <p id="total-price">${product.price / 100}</p>
                             </div>
                             <div className="atc-button-container">
-                                {isCartLoading ? <LoadingSpinner isLoading={isCartLoading} /> :
+                                {isCartLoading ? <BeatLoader size={0.2} color={"#F38385"} /> :
                                     <Button className="product-page-atc-button" onClick={() => {
                                         handleAddToCartClick(product)
                                     }}>Add to cart</Button>}
