@@ -63,6 +63,8 @@ const AuthForm = ({ isRegistered }) => {
         } catch (error) {
             if (error.code === "auth/popup-closed-by-user") {
                 dispatch({ type: LOGIN_ERROR, payload: 'You closed the popup' });
+            } else{
+                dispatch({ type: LOGIN_ERROR, payload: 'An error occurred' });
             }
             //dispatch({ type: LOGIN_ERROR, payload: error.code });
         }

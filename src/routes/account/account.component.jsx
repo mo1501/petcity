@@ -1,19 +1,14 @@
 import React from "react";
-
-
-
-import "./account.styles.css";
-
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-
-
-
+import { useDispatch, useSelector  } from 'react-redux';
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { SIGNOUT } from "../../state/actions/userActions";
 
 
+import "./account.styles.css";
+
 const AccountPage = () => {
+    const user = useSelector(state => state.user.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleSignOut = async () => {
@@ -25,13 +20,19 @@ const AccountPage = () => {
             console.log(error);
         }
     };
-
+    
 
     return (
 
 
-        <div>
-            <h1>Account Page</h1>
+        <div className="account-page">
+            <h3 className="account-page-title">Welcome {user && user.email}</h3>
+            <div className="address-button">
+                <p>Edit Address</p>
+            </div>
+            <div className="orders-button">
+                <p>My Orders</p>
+            </div>
             <button onClick={handleSignOut}>Sign Out</button>
         </div>
 

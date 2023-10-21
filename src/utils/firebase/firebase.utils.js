@@ -93,6 +93,7 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
+    
     console.log("Auth Response:", res);
 
     if (!user) throw new Error("Failed to create user.");
@@ -102,7 +103,7 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
     await setDoc(userDocRef, {
         uid: user.uid,
-        name: email,
+        displayName: email,
         cart: [],
     });
 

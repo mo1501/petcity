@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateItemQuantityFirestore, removeItemFromCartFirestore } from "../../state/actions/cartActions";
 import QuantityPicker from "../quantity-picker/quantity-picker.component";
 import { ReactComponent as DeleteIcon } from '../../assets/images-svgs/trash-vector.svg';

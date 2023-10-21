@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CART_ERROR, addToCart, cartOperationEnd, cartOperationStart } from "../../state/actions/cartActions";
@@ -9,7 +9,7 @@ import Footer from "../../components/footer/footer.component";
 
 import StarRating from "../../components/star-rating/star-rating.component";
 import { BeatLoader } from "react-spinners";
-import LoadingSpinner from "../../components/loading-spinner/loading-spinner.component";
+
 
 
 

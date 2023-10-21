@@ -35,7 +35,6 @@ function App() {
   useEffect(() => {
     if (currentUserId) {
       dispatch(loadUserCart(currentUserId.uid));
-      console.log(currentUserId.uid);
     }
   }, [currentUserId, dispatch, navigate]);
   return (

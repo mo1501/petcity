@@ -13,10 +13,10 @@ const NavLinks = () => {
             <Link className="link" to='/home/deals'>
                 <span className="deals-span">Deals</span>
             </Link>
-            <Link className="link" to='/home/whatsnew'>
+            <Link className="link" to=''>
                 <span className="whatsnew-span">What&apos;s new</span>
             </Link>
-            <Link className="link" to='/home/delivery'>
+            <Link className="link" to=''>
                 <span className="delivery-span">Delivery</span>
             </Link>
         </div>

@@ -1,6 +1,6 @@
 import { db } from '../../utils/firebase/firebase.utils.js';
 import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { getFirestore, doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import {  doc, getDoc, updateDoc } from "firebase/firestore";
 
 // Action types
 export const ADD_TO_CART = 'ADD_TO_CART';

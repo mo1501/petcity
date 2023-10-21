@@ -1,0 +1,8 @@
+.account-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* full height of the viewport */
+    width: 100%;  /* full width */
+}
