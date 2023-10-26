@@ -18,6 +18,33 @@
     margin: 10px;
 }
 
+.card-name-textfield {
+
+    height: 60px;
+    padding: 20px;
+    width: 97%;
+    background-color: #ffffff;
+    border-radius: 40px;
+    margin: 10px;
+    border: 1px solid white;
+
+
+}
+
+.card-name-textfield:focus {
+    outline: none;
+}
+
+.payment-details-container {
+    height: 60px;
+    padding: 20px;
+    width: 97%;
+    background-color: #ffffff;
+    border-radius: 40px;
+    margin: 10px;
+    border: 1px solid white;
+}
+
 .payment-expcvc-section {
     display: flex;
     flex-direction: row;
@@ -53,15 +80,17 @@
     font-size: 36px;
     color: white;
 }
-.checkout-button{
+
+.checkout-button {
     margin: 10px;
     background-color: #F38385;
     height: 70px;
-    width: 50%;
+    width: 80%;
     border-radius: 5px;
 
 }
-.checkout-label{
+
+.checkout-label {
     color: black;
     font-size: 18px;
     font-weight: bold;

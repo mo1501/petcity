@@ -5,14 +5,19 @@ import App from './App.js';
 import reportWebVitals from './reportWebVitals.js';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { Elements } from '@stripe/react-stripe-js';
+import { stripePromise } from './utils/stripe/stripe.utils.js';
 import store from './state/store/store.js';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <Elements stripe={stripePromise}>
+          <App />
+        </Elements>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
