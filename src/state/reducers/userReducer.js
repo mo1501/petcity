@@ -54,6 +54,14 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 authError: action.payload,
                 isloading: false,
             };
+        case 'UPDATE_USER_ADDRESS':
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    address: action.payload
+                }
+            };
         default:
             return state;
     }

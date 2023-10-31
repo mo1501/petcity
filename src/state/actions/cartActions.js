@@ -165,23 +165,28 @@ export const cartOperationEnd = () => ({
 
 
 export const clearCart = () => ({
-    type: CLEAR_CART
+    type: CLEAR_CART,
 });
 
 // Thunk action for checkout
-export const checkout = (userId, cartItems) => {
+export const checkout = (userId, cartItems, cartTotal) => {
     return async dispatch => {
         const ordersRef = collection(db, "orders");
 
         const newOrder = {
             userId: userId,
             items: cartItems,
+            total: cartTotal/100,
             timestamp: Timestamp.now()
         };
 
         try {
             await addDoc(ordersRef, newOrder);
             dispatch(clearCart());
+            const userDocRef = doc(db, 'users', userId);
+            await updateDoc(userDocRef, { cart: [] });
+            console.log("Checkout function invoked with:", userId, cartItems);
+
         } catch (error) {
             console.error("Error saving order: ", error);
         }
@@ -210,6 +215,29 @@ export const loadUserCart = (userId) => {
             }
         } catch (error) {
             console.error("Error fetching user cart from Firestore:", error);
+        }
+    }
+};
+
+export const addUserAddress = (userId, address) => {
+    return async dispatch => {
+        try {
+            // Reference to the user document
+            const userDocRef = doc(db, 'users', userId);
+
+            // Update address in Firestore
+            await updateDoc(userDocRef, { address: address });
+
+            // Dispatch an action here to update the local state if needed
+            dispatch({
+                type: 'UPDATE_USER_ADDRESS',
+                payload: address,
+            });
+            console.log("AddUserAddress function invoked with:", userId, address);
+
+        } catch (error) {
+            console.error("Error updating user address in Firestore:", error);
+            // Handle errors as necessary
         }
     }
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 
 import CartItem from "../../components/cart-item/cart-item.component";
@@ -15,15 +15,20 @@ const CartPage = () => {
     const cartItemCount = useSelector(state => state.cart.cartItemCount);
     const cartTotal = useSelector(state => state.cart.cartTotal);
     const userId = useSelector(state => state.user.user);
+    const [refreshCartPage, setRefreshCartPage] = useState(false);
+    const handleCheckoutSuccess = () => {
+        setRefreshCartPage(!refreshCartPage);
+    };
 
     useEffect(() => {
         // Add the no-scroll class to the body when the component mounts
         document.body.classList.add('no-scroll');
+        
         // Remove the no-scroll class when the component unmounts
         return () => {
             document.body.classList.remove('no-scroll');
         };
-    }, []);
+    }, [refreshCartPage]);
 
     return (
 
@@ -36,7 +41,7 @@ const CartPage = () => {
             </div>
             <div className="cart-page-loading-spinner">{isCartLoading ? <BeatLoader size={0.2} color={"#F38385"} /> : null}</div>
             <div className="cartpage-content">
-                
+
                 <div className="cartitems-section">
                     {
                         cartItems.map(cartProduct => (
@@ -45,7 +50,7 @@ const CartPage = () => {
                     }
                 </div>
                 <div className="checkout-section">
-                    <CheckoutPane cartTotal={cartTotal}/>
+                    <CheckoutPane cartTotal={cartTotal} onCheckoutSuccess={handleCheckoutSuccess} />
                 </div>
             </div>
 

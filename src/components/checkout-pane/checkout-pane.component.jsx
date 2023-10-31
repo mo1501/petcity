@@ -1,21 +1,38 @@
 import React, { useState } from "react";
-import { CardElement, CardNumberElement, CardCvcElement, CardExpiryElement } from "@stripe/react-stripe-js";
+import { CardElement } from "@stripe/react-stripe-js";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { BeatLoader } from "react-spinners";
+import { checkout, addUserAddress } from "../../state/actions/cartActions";
 
 
 import "./checkout-pane.styles.css";
-import PaymentMethodContainer from "../payment-method/payment-method.component.jsx";
-import TextfieldComponent from "../textfield/textfield.component.jsx";
 
 
-const CheckoutPane = ({ cartTotal }) => {
+const CheckoutPane = ({ cartTotal, onCheckoutSuccess }) => {
     const stripe = useStripe();
     const elements = useElements();
-    //const amount = useSelector(cartTotal);
+    const dispatch = useDispatch();
     const currentUser = useSelector(state => state.user.user);
+    const cartItems = useSelector(state => state.cart.cartItems);
+
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+
+    const [country, setCountry] = useState("");
+    const [stateOrProvince, setStateOrProvince] = useState("");
+    const [addressLine1, setAddressLine1] = useState("");
+
+
+    const saveAddressToFirestore = async () => {
+        const address = {
+
+            country,
+            stateOrProvince,
+            addressLine1,
+        }
+        // Use the action to save the address to Firestore
+        dispatch(addUserAddress(currentUser.uid, address));
+    };
     const paymentHandler = async (e) => {
         e.preventDefault();
         if (!stripe || !elements) {
@@ -27,7 +44,7 @@ const CheckoutPane = ({ cartTotal }) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ amount: cartTotal * 100 }),
+            body: JSON.stringify({ amount: cartTotal }),
         }).then((res) => {
             return res.json();
         });
@@ -42,17 +59,21 @@ const CheckoutPane = ({ cartTotal }) => {
                 },
             },
         });
-
+        saveAddressToFirestore();
         setIsProcessingPayment(false);
 
         if (paymentResult.error) {
             alert(paymentResult.error.message);
         } else {
             if (paymentResult.paymentIntent.status === 'succeeded') {
+                dispatch(checkout(currentUser.uid, cartItems, cartTotal));
+                if (onCheckoutSuccess) onCheckoutSuccess();
                 alert('Payment Successful!');
+
             }
         }
     };
+
 
 
     return (
@@ -60,24 +81,25 @@ const CheckoutPane = ({ cartTotal }) => {
         <form className="checkoutpane-section" onSubmit={paymentHandler}>
             <p className="payment-title">Payment Details</p>
             <p className="payment-subtitle">Enter your payment details</p>
-            <input className="card-name-textfield" placeholder={'Name on card ....'} />
-            <input className="card-name-textfield" placeholder={'Country ....'} />
-            <input className="card-name-textfield" placeholder={'State/Province....'} />
-            <input className="card-name-textfield" placeholder={'Address line 1 ....'} />
+            <input className="card-name-textfield"
+                placeholder={'Country ....'}
+                value={country}
+                onChange={e => setCountry(e.target.value)} />
+            <input className="card-name-textfield"
+                placeholder={'State/Province....'}
+                value={stateOrProvince}
+                onChange={e => setStateOrProvince(e.target.value)} />
+            <input className="card-name-textfield"
+                placeholder={'Address line 1 ....'}
+                value={addressLine1}
+                onChange={e => setAddressLine1(e.target.value)} />
             <CardElement className="payment-details-container" />
 
-
-            {/* <CardNumberElement />
-            <div className="payment-expcvc-section">
-                <CardExpiryElement className='expiry-date-field' />
-                <CardCvcElement className='cvc-field' />
-            </div> */}
             <div className="checkout-price-button-section">
                 <div className="price-container">
                     <p className="total">Total:</p>
                     <p className="price">${cartTotal / 100}</p>
                 </div>
-
                 <div >
                     {isProcessingPayment ? <BeatLoader size={0.2} color={"#F38385"} /> :
                         <button type='submit' className="checkout-button"><p className="checkout-label">Checkout</p></button>

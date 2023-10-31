@@ -6,3 +6,17 @@
     height: 100vh; /* full height of the viewport */
     width: 100%;  /* full width */
 }
+.account-page-option{
+    margin: 10px;
+    margin-bottom: 5px;
+    background-color: #F38385;
+    height: 50px;
+    width: 20%;
+    border-radius: 10px;
+    border-color: white;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-weight: bolder;
+    cursor: pointer;
+}

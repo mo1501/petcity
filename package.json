@@ -20,6 +20,7 @@
     "dotenv": "^16.3.1",
     "firebase": "^10.4.0",
     "font-awesome": "^4.7.0",
+    "netlify-cli": "^16.9.2",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
@@ -41,7 +42,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "netlify": "netlify"
   },
   "eslintConfig": {
     "extends": [

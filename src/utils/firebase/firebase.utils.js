@@ -12,7 +12,7 @@ import {
     sendPasswordResetEmail
 
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, getDocs, setDoc, addDoc, collection }
+import { getFirestore, doc, getDoc, getDocs, setDoc, collection }
     from 'firebase/firestore';
 import { getStorage } from "firebase/storage";
 

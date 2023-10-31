@@ -61,12 +61,13 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             break;
 
         case 'CLEAR_CART':
-            return {
+            newState = {
                 ...state,
                 cartItems: [],
                 cartTotal: 0,
                 cartItemCount: 0,
             };
+            break;
 
         case 'CART_OPERATION_START':
             return {
