@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import { ReactComponent as SearchIcon } from '../../../assets/images-svgs/search.svg';
 
@@ -8,23 +8,21 @@ import SearchResults from "../../search-results/search-results.component";
 const SearchBar = ({ products }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
-    const [isDropdownOpen, setDropdownOpen] = useState(false);
     console.log('search results', searchResults);
     console.log('search query', searchQuery);
     // Handle changes in search query here
-    const handleSearch = (query) => {
-        // Implement your search logic here.
+    const handleSearch = useCallback((query) => {
         const filteredResults = products.filter((product) =>
             product.name.toLowerCase().includes(query.toLowerCase())
         );
         setSearchResults(filteredResults);
-    };
+    }, [products]);
 
     // Update search results when the searchQuery changes
 
     useEffect(() => {
         handleSearch(searchQuery);
-    }, [searchQuery]);
+    }, [searchQuery,handleSearch]);
 
    
 
@@ -43,7 +41,7 @@ const SearchBar = ({ products }) => {
             {searchQuery && (
                 <div className="search-results-dropdown">
                     {searchResults.map((product) => (
-                        <SearchResults product={product}  />
+                        <SearchResults id={product.id} product={product}  />
                     ))}
                 </div>
 

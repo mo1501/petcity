@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { useSelector } from 'react-redux';
 import { Outlet } from "react-router-dom";
@@ -10,7 +10,7 @@ import NavLinks from "../../components/navbar components/nav-links/nav-links.com
 import SearchBar from "../../components/navbar components/search-bar/search-bar.component";
 import Cart from "../../components/navbar components/cart/cart.component";
 import AccountIcon from "../../components/navbar components/account/account.component";
-import SearchResults from "../../components/search-results/search-results.component";
+
 
 
 const NavBar = () => {
