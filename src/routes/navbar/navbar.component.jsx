@@ -1,5 +1,7 @@
-import React from "react";
-import { Outlet} from "react-router-dom";
+import React, { useState } from "react";
+
+import { useSelector } from 'react-redux';
+import { Outlet } from "react-router-dom";
 import "./navbar.styles.css";
 
 
@@ -8,40 +10,42 @@ import NavLinks from "../../components/navbar components/nav-links/nav-links.com
 import SearchBar from "../../components/navbar components/search-bar/search-bar.component";
 import Cart from "../../components/navbar components/cart/cart.component";
 import AccountIcon from "../../components/navbar components/account/account.component";
-
+import SearchResults from "../../components/search-results/search-results.component";
 
 
 const NavBar = () => {
+    const products = useSelector(state => state.products.products);
 
     return (
         <>
-        <div className="navbar">
-            <div className="applogo-container">
-            
-            <AppLogo />
-            </div>
-            <div className="navlinks-container">
-            <NavLinks />
-            </div>
-            <div className="searchbar-container">
-            <SearchBar />
-            </div>
-            <div className="cart-container">
-            <Cart />
-            </div>
-            <div className="accounticon-container">
-            <AccountIcon />
-            </div>
-            
-            
+            <div className="navbar">
+                <div className="applogo-container">
 
-           
-        </div>
-        <div className="navbar-divider"></div>
-        <Outlet/>
-        
+                    <AppLogo />
+                </div>
+                <div className="navlinks-container">
+                    <NavLinks />
+                </div>
+                <div className="searchbar-container">
+                    <SearchBar products={products}/>
+                </div>
+                <div className="cart-container">
+                    <Cart />
+                </div>
+                <div className="accounticon-container">
+                    <AccountIcon />
+                </div>
+
+
+
+
+            </div>
+            <div className="navbar-divider"></div>
+
+            <Outlet />
+
         </>
-        
+
     );
 };
 export default NavBar;

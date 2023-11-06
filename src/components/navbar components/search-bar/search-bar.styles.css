@@ -23,7 +23,18 @@
 
 .search-icon {
     height: 20px;
+}
 
- 
 
+.search-results-dropdown {
+    position: absolute;
+    top: 10%;
+    left: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    overflow-y: auto;
+    max-height: 400px;
+    max-width: 40%; /* Make the dropdown as wide as the search bar */
 }

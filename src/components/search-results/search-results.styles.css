@@ -1,0 +1,21 @@
+.search-result-item {
+    display: flex;
+    flex-direction: row;
+    max-width: 200px;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.search-result-item:hover {
+    background-color: black;
+}
+
+/* Style the product image and name */
+.search-result-item img {
+    width: 10px;
+    height: 10px;
+    
+    
+}
