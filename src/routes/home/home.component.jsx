@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import CatImage from '../../assets/images-svgs/CatImage.png';
 import DogImage from '../../assets/images-svgs/DogImage.png';
 import BirdImage from '../../assets/images-svgs/Bird.png';
@@ -13,7 +14,10 @@ import CarouselContainer from "../../components/carousel/carousel.component";
 import "./home.styles.css";
 
 const HomePage = () => {
-
+    const navigate = useNavigate();
+    const handleclick = () => {
+        navigate(`/home/categories`);
+    }
     return (
         <div className="homepage">
             <div className="page-content">
@@ -25,7 +29,7 @@ const HomePage = () => {
                 </div>
                 <div className="pet-categories-section">
                     <h5>Shop by Pet</h5>
-                    <div className="pet-categories-container">
+                    <div className="pet-categories-container" onClick={handleclick}>
                         <div className="category-icon">
                             <img src={CatImage} alt="Cat" />
                             <span>Cat</span>
