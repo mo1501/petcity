@@ -20,8 +20,8 @@ const DealsPage = () => {
     return (
 
         <>
-        <h2 className="deals-page-title">Deals</h2>
-        <div className="products-container">
+        <p className="deals-page-title">Deals</p>
+        <div className="products-container-grid">
             {isProductsLoading ? <LoadingSpinner loading={isProductsLoading} /> : null}
             {products.map((product) => (
                 <ProductCard2 key={product.id} product={product} />

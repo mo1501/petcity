@@ -11,6 +11,7 @@
     width: 1450px;
     height: 20%;
     align-items: flex-start;
+    margin-bottom: 10px;
     
      
     
@@ -28,7 +29,7 @@
 
 }
 .category-title{
-    margin-left: 5px;
+    margin-left: 15px;
     margin-bottom: 0px;
     font-weight: 600;
     font-size: 28px;

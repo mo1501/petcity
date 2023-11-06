@@ -1,0 +1,16 @@
+.deals-page-title {
+    margin-left: 30px;
+    font-size: 28px;
+    font-weight: bold;
+
+
+}
+
+.products-container-grid {
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Three columns with equal width */
+    grid-gap: 20px;
+    /* Adjust the gap between items as needed */
+}
