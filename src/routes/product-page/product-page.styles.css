@@ -2,6 +2,14 @@
     display: flex;
     flex-direction: row;
 }
+@media (max-width: 900px) {
+    .product-page {
+        display: flex;
+    flex-direction: column;
+        
+    }
+
+}
 
 .product-image-container {
     height: 500px;
@@ -16,6 +24,13 @@
     width: 700px;
     padding: 20px;
 }
+@media (max-width: 900px) {
+    .product-image {
+        width: 100%;
+        
+    }
+
+}
 
 
 .product-content {
@@ -23,6 +38,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .product-page-name {
     font-size: 20px;
     font-weight: 600;

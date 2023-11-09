@@ -80,9 +80,6 @@ const ProductPage = () => {
 
             </div>
 
-            <footer className="footer">
-                <Footer />
-            </footer>
         </>
 
 

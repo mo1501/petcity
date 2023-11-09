@@ -31,7 +31,7 @@ const Footer = () => {
             
 
             <div className="need-help-section">
-                <h3>Contact</h3>
+                <h3 className="footer-title">Contact</h3>
                 <div className="location-container">
                     <HomeIcon />
                     <span>25th Avenue Lancaster</span>
@@ -48,7 +48,7 @@ const Footer = () => {
             </div>
 
             <div className="information-section">
-                <h3>Information</h3>
+                <h3 className="footer-title">Information</h3>
                 <div className="about-us-container">
                     <PawIcon />
                     <span>About Us</span>
@@ -65,7 +65,7 @@ const Footer = () => {
             </div>
 
             <div className="socials-section">
-                <h3>Social Links</h3>
+                <h3 className="footer-title">Social Links</h3>
                 <div className="socials-container">
                     <p>We are available on all social channels. Follow us for latest updates and notifications !!</p>
                     <div className="socialicons-container">

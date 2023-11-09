@@ -7,12 +7,6 @@
     height: 20px;
     position: static;
     margin-bottom: 30px;
-
-
-
-
-
-
 }
 
 
@@ -61,6 +55,11 @@
     margin-bottom: 10px;
     height: 1px;
     background-color: black;
+    width: 100%;
+}
+
+.minimal-navbar {
+    display: none;
 }
 
 /* Media query for smaller screens */
@@ -70,6 +69,21 @@
         display: none;
         /* Hide the desktop navbar */
     }
+
+    .minimal-navbar {
+        display: inline-block;
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+    }
+
+    .applogo-container {
+
+        align-items: center;
+        flex-basis: 2%;
+    }
+
+
 }
 
 /* Styles for the toggle button, adjust as needed */
@@ -88,5 +102,14 @@
 
         /* Show the toggle button for smaller screens */
     }
+
+}
+
+.petcity-logo {
+    padding-top: 0px;
+    padding-left: 10px;
+    height: 50px;
+    object-fit: contain;
+    width: 50px;
 
 }

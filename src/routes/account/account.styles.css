@@ -4,14 +4,15 @@
     justify-content: center;
     align-items: center;
     height: 100vh; /* full height of the viewport */
-    width: 100%;  /* full width */
+    width: 100%;
+    font-size: 30px;  /* full width */
 }
 .account-page-option{
     margin: 10px;
     margin-bottom: 5px;
     background-color: #F38385;
     height: 50px;
-    width: 20%;
+    width: 30%;
     border-radius: 10px;
     border-color: white;
     text-align: center;
@@ -19,4 +20,5 @@
     padding: 10px;
     font-weight: bolder;
     cursor: pointer;
+    font-size: 0.5em;
 }

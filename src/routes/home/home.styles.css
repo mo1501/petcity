@@ -2,11 +2,13 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    width: 100%;
+    height: 100%;
 
 }
 
 .carousel-container {
-    height: 600px;
+    height: 40%;
     width: 100%;
 
 
@@ -23,6 +25,11 @@
     flex-direction: column;
     justify-content: center;
     border-top: 3px solid #F2B6B7;
+    width: 100%;
+    overflow-x: auto;
+}
+.pet-categories-section-title{
+    padding: 10px;
 }
 
 .pet-categories-container {
@@ -34,10 +41,23 @@
 
 }
 
-.category-icon{
+@media (max-width: 900px) {
+    .pet-categories-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Three columns with equal width */
+        grid-gap: 5px;
+        /* Adjust the gap between items as needed */
+        /* Show the toggle button for smaller screens */
+    }
+
+}
+
+.category-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-right: 20px;
     padding: 10px;
 }
+

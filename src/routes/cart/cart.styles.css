@@ -49,6 +49,14 @@
     padding: 5px;
     margin: 5px;
 }
+@media (max-width: 900px) {
+    .cartpage-content {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+}
 
 .cartitems-section {
     flex-basis: 60%;
@@ -67,7 +75,16 @@
 
 .checkout-section {
     margin-left: 20px;
+    margin-right: 10px;
     background-color: #20716A;
     flex-basis: 40%;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+@media (max-width: 900px) {
+    .checkout-section {
+        margin-right: 20px;
+        margin-top: 20px;
+        
+    }
+
 }

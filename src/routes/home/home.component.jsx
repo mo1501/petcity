@@ -20,7 +20,7 @@ const HomePage = () => {
     }
     return (
         <div className="homepage">
-            <div className="page-content">
+            
                 <div className="page-title">
                     <h5>Explore our products</h5>
                 </div>
@@ -28,7 +28,7 @@ const HomePage = () => {
                     <CarouselContainer />
                 </div>
                 <div className="pet-categories-section">
-                    <h5>Shop by Pet</h5>
+                    <h5 className="pet-categories-section-title">Shop by Pet</h5>
                     <div className="pet-categories-container" onClick={handleclick}>
                         <div className="category-icon">
                             <img src={CatImage} alt="Cat" />
@@ -65,7 +65,7 @@ const HomePage = () => {
                         </div>
                     </div>
 
-                </div>
+                
             </div>
 
             <footer className="footer">

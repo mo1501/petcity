@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-
 import { useSelector } from 'react-redux';
 import { Outlet } from "react-router-dom";
-import "./navbar.styles.css";
-
-
 import AppLogo from "../../components/navbar components/applogo/applogo.component";
 import NavLinks from "../../components/navbar components/nav-links/nav-links.component";
 import SearchBar from "../../components/navbar components/search-bar/search-bar.component";
@@ -12,8 +8,7 @@ import Cart from "../../components/navbar components/cart/cart.component";
 import AccountIcon from "../../components/navbar components/account/account.component";
 import NavbarDrawer from "../../components/navbar components/navbar-drawer/navbar-drawer.component";
 import { ReactComponent as MenuIcon } from '../../assets/images-svgs/bars-solid.svg';
-
-
+import "./navbar.styles.css";
 
 const NavBar = () => {
     const products = useSelector(state => state.products.products);
@@ -49,7 +44,13 @@ const NavBar = () => {
 
 
             </div>
-            <MenuIcon className="drawer-toggle" onClick={toggleDrawer} />
+            <div className="minimal-navbar">
+                <div className="applogo-container">
+                    <AppLogo />
+                </div>
+                <MenuIcon className="drawer-toggle" onClick={toggleDrawer} />
+            </div>
+
 
             <div className="navbar-divider"></div>
 
