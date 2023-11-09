@@ -35,7 +35,12 @@ function App() {
   useEffect(() => {
     if (currentUserId) {
       dispatch(loadUserCart(currentUserId.uid));
+      
     }
+    if(!currentUserId){
+      navigate("/");
+    }
+
   }, [currentUserId, dispatch, navigate]);
   return (
     <>

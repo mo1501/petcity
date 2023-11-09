@@ -1,0 +1,27 @@
+.drawer-title{
+    text-align: center;
+    font-weight: bold;
+}
+.drawer-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.drawer-searchbar{
+    border: 1px solid black;
+    padding: 5px;
+    width: 90%;
+    margin-bottom: 20px;
+    border-radius: 20px;
+
+}
+
+.drawer-navlinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.link{
+    margin: 10px;
+}

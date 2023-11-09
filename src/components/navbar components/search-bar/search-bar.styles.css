@@ -36,5 +36,5 @@
     z-index: 1;
     overflow-y: auto;
     max-height: 400px;
-    max-width: 40%; /* Make the dropdown as wide as the search bar */
+    max-width: 100%; /* Make the dropdown as wide as the search bar */
 }
