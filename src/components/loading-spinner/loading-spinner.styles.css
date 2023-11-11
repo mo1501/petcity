@@ -11,19 +11,19 @@
 }
 
 .spinner {
-    border: 16px solid rgba(255, 255, 255, 0.3); /* Increase border thickness */
+    border: 16px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    border-top: 16px solid red; /* Make the top border thicker and red */
-    width: 100px; /* Double the size */
-    height: 100px; 
+    border-top: 16px solid red;
+    width: 100px;
+    height: 100px;
     animation: spin 1s linear infinite;
 
-    /* Positioning styles to center the spinner */
-    position: fixed; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); /* This ensures the spinner remains centered regardless of its size */
-    z-index: 1000; /* This ensures the spinner is above the overlay */
+    /* Center the spinner */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
 @keyframes spin {
@@ -34,4 +34,3 @@
         transform: rotate(360deg);
     }
 }
-
