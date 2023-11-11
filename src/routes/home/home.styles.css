@@ -19,7 +19,6 @@
 }
 
 .pet-categories-section {
-    padding: 10px;
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -28,7 +27,8 @@
     width: 100%;
     overflow-x: auto;
 }
-.pet-categories-section-title{
+
+.pet-categories-section-title {
     padding: 10px;
 }
 
@@ -44,9 +44,10 @@
 @media (max-width: 900px) {
     .pet-categories-container {
         display: grid;
+        width: fit-content;
         grid-template-columns: repeat(2, 1fr);
         /* Three columns with equal width */
-        grid-gap: 5px;
+        grid-gap: 2px;
         /* Adjust the gap between items as needed */
         /* Show the toggle button for smaller screens */
     }

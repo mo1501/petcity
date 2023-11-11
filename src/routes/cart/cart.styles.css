@@ -90,8 +90,9 @@
 }
 @media (max-width: 900px) {
     .checkout-section {
-        margin-right: 20px;
-        margin-top: 20px;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-top: 10px;
         
     }
 
