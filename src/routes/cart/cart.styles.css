@@ -73,6 +73,14 @@
     height: 100%;
 }
 
+@media (max-width: 900px) {
+    .no-scroll {
+        overflow-y: auto;
+        
+    }
+
+}
+
 .checkout-section {
     margin-left: 20px;
     margin-right: 10px;

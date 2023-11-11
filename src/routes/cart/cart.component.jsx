@@ -23,7 +23,7 @@ const CartPage = () => {
     useEffect(() => {
         // Add the no-scroll class to the body when the component mounts
         document.body.classList.add('no-scroll');
-        
+
         // Remove the no-scroll class when the component unmounts
         return () => {
             document.body.classList.remove('no-scroll');
@@ -33,7 +33,7 @@ const CartPage = () => {
     return (
 
 
-        <>
+        <div className="cart-page">
 
             <div className="cart-header">
                 <p className="cart-title">CART</p>
@@ -55,7 +55,7 @@ const CartPage = () => {
             </div>
 
 
-        </>
+        </div>
 
 
 
