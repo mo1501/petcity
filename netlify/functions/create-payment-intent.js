@@ -20,6 +20,7 @@ export async function handler(event) {
 
         return {
             statusCode: 400,
+
             body: JSON.stringify({ error }),
         };
     }
