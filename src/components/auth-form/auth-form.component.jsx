@@ -167,6 +167,7 @@ const AuthForm = ({ isRegistered }) => {
 
             <SocialsPanel onClickFunction={signInWithGoogle} />
             <p className="auth-form-header-subtitle">By continuing you are confirming that you agree with our Terms and Conditions</p>
+            
 
         </form>
 

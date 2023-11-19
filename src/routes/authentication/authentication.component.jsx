@@ -20,17 +20,7 @@ const AuthPage = () => {
     const changeIsRegistered = () => {
         setisRegistered(prevState => !prevState);
     };
-    useEffect(() => {
-        // Add the no-scroll class to the body when the component mounts
-        document.body.classList.add('no-scroll');
-
-
-
-        // Remove the no-scroll class when the component unmounts
-        return () => {
-            document.body.classList.remove('no-scroll');
-        };
-    }, []);
+   
     return (
         <div className="authentication-page">
             <div className="hero-image-section">

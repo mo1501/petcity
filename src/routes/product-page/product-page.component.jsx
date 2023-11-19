@@ -5,7 +5,7 @@ import { CART_ERROR, addToCart, cartOperationEnd, cartOperationStart } from "../
 
 import Button from 'react-bootstrap/Button';
 import "./product-page.styles.css";
-import Footer from "../../components/footer/footer.component";
+
 
 import StarRating from "../../components/star-rating/star-rating.component";
 import { BeatLoader } from "react-spinners";

@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link } from "react-router-dom";
-
-import NavLinks from '../nav-links/nav-links.component';
 import SearchBar from '../search-bar/search-bar.component';
-import Cart from '../cart/cart.component';
-import AccountIcon from '../account/account.component';
+
 import './navbar-drawer.styles.css'
 
 function NavbarDrawer({ isDrawerOpen }) {

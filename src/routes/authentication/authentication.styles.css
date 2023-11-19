@@ -9,6 +9,7 @@
     flex-basis: 60%;
 
 }
+
 @media (max-width: 900px) {
     .hero-image-section {
         display: none;
@@ -23,13 +24,21 @@
 }
 
 .auth-form-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex-basis: 50%;
-    margin: 10px;
+    margin: 20px;
+    height: 100%;
+
 }
+
 @media (max-width: 900px) {
     .auth-form-section {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         flex-basis: 100%;
     }
@@ -37,7 +46,7 @@
 }
 
 .login-confirmation {
-    margin-top: 40px;
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -67,7 +76,7 @@
 }
 
 .register-toggle-container {
-    margin-top: 40px;
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -76,6 +85,7 @@
     font-weight: 300;
     font-size: small;
 }
+
 .sign-up-link {
     color: #F38385;
     font-weight: 700;
