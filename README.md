@@ -7,22 +7,22 @@ PetCity is an online pet store web application where users can explore and purch
 - **User Authentication:**
   - Users can register and log in securely using Google Firebase Authentication.
 ![PetCity Screenshot](public/images/PetCity1.png)
-![PetCity Screenshot](client/public/images/PetCity2.png)
+![PetCity Screenshot](public/images/PetCity2.png)
 
 - **Product Categories:**
   - Browse a variety of pet products categorized by types, such as food or medicines.
-  ![PetCity Screenshot](client/public/images/PetCity3.png)
-  ![PetCity Screenshot](client/public/images/PetCity4.png)
-  ![PetCity Screenshot](client/public/images/PetCity5.png)
-  ![PetCity Screenshot](client/public/images/PetCity6.png)
+  ![PetCity Screenshot](public/images/PetCity3.png)
+  ![PetCity Screenshot](public/images/PetCity4.png)
+  ![PetCity Screenshot](public/images/PetCity5.png)
+  ![PetCity Screenshot](public/images/PetCity6.png)
 
 - **Shopping Cart:**
   - Add desired products to the shopping cart for easy checkout.
-  ![PetCity Screenshot](client/public/images/PetCity7.png)
+  ![PetCity Screenshot](public/images/PetCity7.png)
 
 - **Stripe Checkout:**
   - Secure and seamless checkout experience facilitated by the Stripe API.
-  ![PetCity Screenshot](client/public/images/PetCity8.png)
+  ![PetCity Screenshot](public/images/PetCity8.png)
 
 ## Tech Stack
 
