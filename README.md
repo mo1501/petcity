@@ -6,7 +6,7 @@ PetCity is an online pet store web application where users can explore and purch
 
 - **User Authentication:**
   - Users can register and log in securely using Google Firebase Authentication.
-![PetCity Screenshot](client/public/images/PetCity1.png)
+![PetCity Screenshot](public/images/PetCity1.png)
 ![PetCity Screenshot](client/public/images/PetCity2.png)
 
 - **Product Categories:**
