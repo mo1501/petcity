@@ -51,7 +51,6 @@ const CheckoutPane = ({ cartTotal, onCheckoutSuccess }) => {
 
         });
         console.log('Payment Intent Response:', response);
-
         const clientSecret = response.paymentIntent.client_secret;
         console.log('client secret:', clientSecret);
         const paymentResult = await stripe.confirmCardPayment(clientSecret, {
