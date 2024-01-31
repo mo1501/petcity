@@ -45,12 +45,15 @@ const CheckoutPane = ({ cartTotal, onCheckoutSuccess }) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ amount: cartTotal }),
+            
         }).then((res) => {
             return res.json();
+
         });
+        console.log('Payment Intent Response:', response);
 
         const clientSecret = response.paymentIntent.client_secret;
-
+        console.log('client secret:', clientSecret);
         const paymentResult = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement),
