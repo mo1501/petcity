@@ -51,7 +51,8 @@ const AccountPage = () => {
             <h3 className="account-page-title">Welcome {user && user.email}</h3>
 
             <p className="account-page-option" onClick={() => { navigate('/forgot-password') }}> Password Reset</p>
-            <p className="account-page-option" onClick={() => setShowOrders(!showOrders)}> My Orders</p>
+            <p className="account-page-option" > My Orders</p>
+            {/* onClick={() => setShowOrders(!showOrders)} */}
             {showOrders && (
                 <div className="account-orders">
                     {orders.length === 0 ? (
